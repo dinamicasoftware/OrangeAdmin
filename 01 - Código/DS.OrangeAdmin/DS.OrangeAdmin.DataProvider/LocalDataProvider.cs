@@ -13,5 +13,10 @@ namespace DS.OrangeAdmin.DataProvider
         {
             return BusinessProvider.Clients.GetClients();
         }
+
+        public void SaveClient(ClientDTO client)
+        {
+            BusinessProvider.Clients.SaveOrUpdate(client);
+        }
     }
 }

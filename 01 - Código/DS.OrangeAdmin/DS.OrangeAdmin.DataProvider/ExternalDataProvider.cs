@@ -11,5 +11,10 @@ namespace DS.OrangeAdmin.DataProvider
         {
             throw new NotImplementedException();
         }
+
+        public void SaveClient(ClientDTO client)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

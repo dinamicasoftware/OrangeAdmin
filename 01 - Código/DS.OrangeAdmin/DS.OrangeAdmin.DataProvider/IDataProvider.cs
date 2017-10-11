@@ -8,5 +8,6 @@ namespace DS.OrangeAdmin.DataProvider
     public interface IDataProvider
     {
         IQueryable<ClientDTO> GetClients();
+        void SaveClient(ClientDTO client);
     }
 }
