@@ -4,6 +4,7 @@ using System.Linq;
 using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.Core.BLL;
 using DS.OrangeAdmin.Core;
+using DS.OrangeAdmin.Core.Operations;
 
 namespace DS.OrangeAdmin.DataProvider
 {
@@ -14,9 +15,9 @@ namespace DS.OrangeAdmin.DataProvider
             return BusinessProvider.Clients.GetClients();
         }
 
-        public void SaveClient(ClientDTO client)
+        public OperationResult SaveClient(ClientDTO client)
         {
-            BusinessProvider.Clients.SaveOrUpdate(client);
+            return BusinessProvider.Clients.SaveOrUpdate(client);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DS.OrangeAdmin.Core.DTO;
+using DS.OrangeAdmin.Core.Operations;
 
 namespace DS.OrangeAdmin.DataProvider
 {
@@ -12,7 +13,7 @@ namespace DS.OrangeAdmin.DataProvider
             throw new NotImplementedException();
         }
 
-        public void SaveClient(ClientDTO client)
+        public OperationResult SaveClient(ClientDTO client)
         {
             throw new NotImplementedException();
         }

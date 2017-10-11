@@ -4,6 +4,8 @@ using System.Linq;
 using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.Data;
 using DS.OrangeAdmin.Data.Entities;
+using System.Data.Entity.Infrastructure;
+using DS.OrangeAdmin.Core.Operations;
 
 namespace DS.OrangeAdmin.Core.BLL
 {
@@ -29,22 +31,48 @@ namespace DS.OrangeAdmin.Core.BLL
             });
         }
 
-        public bool SaveOrUpdate(ClientDTO client)
+        public OperationResult SaveOrUpdate(ClientDTO client)
         {
+            return safeSaveOrUpdate(client);
+        }
 
-            while ()
+        private OperationResult safeSaveOrUpdate(ClientDTO client)
+        {
+            OperationResult operationResult;
+            bool retryOperation;
+            int retryCounter = 0;
+
+            do
+            {
                 try
                 {
-
-                    this.saveOrUpdate();
+                    operationResult = saveOrUpdate(client);
+                    retryOperation = false;
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    operationResult = new OperationResult(false, ex.ToString());
+                    if (retryCounter < 3)
+                    {
+                        retryOperation = true;
+                        retryCounter++;
+                    }
+                    else
+                    {
+                        retryOperation = false;
+                    }
                 }
                 catch (Exception ex)
                 {
-
+                    operationResult = new OperationResult(false, ex.ToString());
+                    retryOperation = false;
                 }
+            } while (retryOperation);
+
+            return operationResult;
         }
 
-        private bool saveOrUpdate(ClientDTO client)
+        private OperationResult saveOrUpdate(ClientDTO client)
         {
             var context = new OrangeContext();
 
@@ -77,6 +105,8 @@ namespace DS.OrangeAdmin.Core.BLL
             }
 
             context.SaveChanges();
+
+            return new OperationResult();
         }
     }
 }
