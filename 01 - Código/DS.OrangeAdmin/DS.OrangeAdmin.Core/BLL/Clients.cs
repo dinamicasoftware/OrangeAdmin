@@ -4,12 +4,12 @@ using System.Linq;
 using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.Data;
 using DS.OrangeAdmin.Data.Entities;
-using System.Data.Entity.Infrastructure;
 using DS.OrangeAdmin.Core.Operations;
+using DS.OrangeAdmin.Core.Base;
 
 namespace DS.OrangeAdmin.Core.BLL
 {
-    public class Clients
+    public class Clients : BaseBll
     {
         internal Clients()
         {
@@ -33,43 +33,7 @@ namespace DS.OrangeAdmin.Core.BLL
 
         public OperationResult SaveOrUpdate(ClientDTO client)
         {
-            return safeSaveOrUpdate(client);
-        }
-
-        private OperationResult safeSaveOrUpdate(ClientDTO client)
-        {
-            OperationResult operationResult;
-            bool retryOperation;
-            int retryCounter = 0;
-
-            do
-            {
-                try
-                {
-                    operationResult = saveOrUpdate(client);
-                    retryOperation = false;
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    operationResult = new OperationResult(false, ex.ToString());
-                    if (retryCounter < 3)
-                    {
-                        retryOperation = true;
-                        retryCounter++;
-                    }
-                    else
-                    {
-                        retryOperation = false;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    operationResult = new OperationResult(false, ex.ToString());
-                    retryOperation = false;
-                }
-            } while (retryOperation);
-
-            return operationResult;
+            return this.safeOperation<ClientDTO>(saveOrUpdate, client);
         }
 
         private OperationResult saveOrUpdate(ClientDTO client)
