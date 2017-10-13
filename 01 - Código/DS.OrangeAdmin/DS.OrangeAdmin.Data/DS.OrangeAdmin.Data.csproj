@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseEntity.cs" />
+    <Compile Include="Entities\Foo.cs" />
+    <Compile Include="InitialData\OrangeInitializer.cs" />
     <Compile Include="OrangeContext.cs" />
     <Compile Include="Entities\Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

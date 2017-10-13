@@ -10,6 +10,6 @@ namespace DS.OrangeAdmin.Core.Base
     public class BaseDTO
     {
         [DataMember]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

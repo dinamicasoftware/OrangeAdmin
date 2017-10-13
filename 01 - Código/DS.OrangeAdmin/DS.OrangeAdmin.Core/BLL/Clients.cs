@@ -40,14 +40,14 @@ namespace DS.OrangeAdmin.Core.BLL
         {
             var context = new OrangeContext();
 
-            if (client.Id == 0)
+            if (client.Id == Guid.Empty)
             {
                 Client clientToSave = new Client()
                 {
+                    Id = Guid.NewGuid(),
                     Codigo = client.Codigo,
                     CodigoPostal = client.CodigoPostal,
                     Direccion = client.Direccion,
-                    Id = 1,
                     Localidad = client.Localidad,
                     Nombre = client.Nombre,
                     NombreFantasia = client.NombreFantasia

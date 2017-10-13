@@ -5,8 +5,7 @@ using System.Runtime.Serialization;
 
 namespace DS.OrangeAdmin.Core.DTO
 {
-    [DataServiceKey("Id")]
-    [DataContract]
+    [DataServiceKey("Id"), DataContract]
     public class ClientDTO : BaseDTO
     {
         [DataMember]

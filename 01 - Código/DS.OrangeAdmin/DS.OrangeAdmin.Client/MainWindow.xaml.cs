@@ -27,7 +27,7 @@ namespace DS.OrangeAdmin.Client
             InitializeComponent();
 
             IDataProvider dataProvider = new LocalDataProvider();
-            var clients = dataProvider.GetClients().Where(cli => cli.Nombre.Length > 8);
+            var clients = dataProvider.GetClients(); //.Where(cli => cli.Nombre.Length > 8);
             var count = clients.Count();
             var newClient = new ClientDTO();
             newClient.Nombre = "Leo!";

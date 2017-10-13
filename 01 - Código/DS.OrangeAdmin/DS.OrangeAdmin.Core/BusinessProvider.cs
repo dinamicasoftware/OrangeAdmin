@@ -10,16 +10,6 @@ namespace DS.OrangeAdmin.Core
     public static class BusinessProvider
     {
         private static Clients clients;
-
-        public static Clients Clients
-        {
-            get
-            {
-                if (clients == null)
-                    clients = new Clients();
-
-                return clients;
-            }
-        }
+        public static Clients Clients => clients ?? (clients = new Clients());
     }
 }
