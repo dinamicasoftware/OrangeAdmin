@@ -7,5 +7,11 @@ namespace DS.OrangeAdmin.Core.Base
     {
         [DataMember]
         public Guid Id { get; set; }
+        [DataMember]
+        public DateTime CreatedAt { get; set; }
+        [DataMember]
+        public DateTime UpdatedAt { get; set; }
+        [DataMember]
+        public bool Deleted { get; set; }
     }
 }

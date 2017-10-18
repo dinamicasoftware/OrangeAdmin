@@ -71,6 +71,15 @@
     <Compile Include="BLL\Clients.cs" />
     <Compile Include="BusinessProvider.cs" />
     <Compile Include="DTO\ClientDTO.cs" />
+    <Compile Include="DTO\ClientTypeDTO.cs" />
+    <Compile Include="DTO\ContactTypeDTO.cs" />
+    <Compile Include="DTO\CountryDTO.cs" />
+    <Compile Include="DTO\DocumentTypeDTO.cs" />
+    <Compile Include="DTO\EmailDTO.cs" />
+    <Compile Include="DTO\IVATypeDTO.cs" />
+    <Compile Include="DTO\PhoneNumberDTO.cs" />
+    <Compile Include="DTO\StateDTO.cs" />
+    <Compile Include="DTO\ZoneDTO.cs" />
     <Compile Include="Operations\Operation.cs" />
     <Compile Include="Operations\OperationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
