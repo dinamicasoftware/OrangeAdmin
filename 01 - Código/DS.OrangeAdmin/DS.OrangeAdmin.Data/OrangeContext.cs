@@ -1,12 +1,7 @@
-﻿
-using DS.OrangeAdmin.Data.Entities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DS.OrangeAdmin.Data.Entities;
 using DS.OrangeAdmin.Data.InitialData;
 
 namespace DS.OrangeAdmin.Data
@@ -15,20 +10,25 @@ namespace DS.OrangeAdmin.Data
     {
         public OrangeContext() : base("OrangeDB")
         {
-            //Database.SetInitializer<OrangeContext>(null);
-            Database.SetInitializer<OrangeContext>(new OrangeInitializer());
-            //Database.SetInitializer<OrangeContext>(new OrangeInitializer(this));
-            //Database.SetInitializer<OrangeContext>(new CreateDatabaseIfNotExists<OrangeContext>());
+            Database.SetInitializer(new OrangeInitializer());
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Client>().HasKey(u => u.Id).ToTable("Clientes");
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            //modelBuilder.Entity<Client>().HasKey(u => u.Id).ToTable("Clientes");
+            //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
         public virtual DbSet<Client> ClientsDao { get; set; }
-        public virtual DbSet<Foo> FoosDao { get; set; }
+        public virtual DbSet<ClientType> ClientTypesDao { get; set; }
+        public virtual DbSet<ContactType> ContactTypesDao { get; set; }
+        public virtual DbSet<Country> CountriesDao { get; set; }
+        public virtual DbSet<DocumentType> DocumentTypesDao { get; set; }
+        public virtual DbSet<Email> EmailsDao { get; set; }
+        public virtual DbSet<IVAType> IVATypesDao { get; set; }
+        public virtual DbSet<PhoneNumber> PhoneNumbersDao { get; set; }
+        public virtual DbSet<State> StatesDao { get; set; }
+        public virtual DbSet<Zone> ZonesDao { get; set; }
     }
 }

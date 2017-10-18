@@ -7,14 +7,18 @@ using DS.OrangeAdmin.Data.Entities;
 
 namespace DS.OrangeAdmin.Data.InitialData
 {
-    public class OrangeInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<OrangeContext>
+    class OrangeInitializer : MigrateDatabaseToLatestVersion<OrangeContext, MigrateDBConfiguration>
     {
         //public OrangeInitializer(OrangeContext context) //mal: esto obliga a correr el seed siempre
         //{
         //    Seed(context);
         //}
+        public override void InitializeDatabase(OrangeContext context)
+        {
+            base.InitializeDatabase(context);
+        }
 
-        protected override void Seed(OrangeContext context)
+        /*protected override void Seed(OrangeContext context)
         {
             var clients = new List<Client>
             {
@@ -32,6 +36,6 @@ namespace DS.OrangeAdmin.Data.InitialData
 
             clients.ForEach(x => context.ClientsDao.Add(x));
             context.SaveChanges();
-        }
+        }*/
     }
 }

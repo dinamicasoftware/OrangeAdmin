@@ -1,19 +1,19 @@
-﻿using DS.OrangeAdmin.Data.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DS.OrangeAdmin.Data.Base;
 
 namespace DS.OrangeAdmin.Data.Entities
 {
     public class Client : BaseEntity
     {
-        public string Codigo { get; set; }
-        public string Nombre { get; set; }
-        public string NombreFantasia { get; set; }
-        public string Direccion { get; set; }
-        public string Localidad { get; set; }
-        public string CodigoPostal { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public string Alias { get; set; }
+        public DocumentType DocumentType { get; set; }
+        public string DocumentNumber { get; set; }
+        public IVAType IVA { get; set; }
+        public ClientType ClientType { get; set; }
+        public IList<Email> Emails { get; set; }
+        public string Observation { get; set; }
     }
 }

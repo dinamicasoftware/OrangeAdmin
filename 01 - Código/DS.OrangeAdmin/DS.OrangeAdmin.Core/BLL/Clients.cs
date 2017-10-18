@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.Data;
@@ -21,13 +20,13 @@ namespace DS.OrangeAdmin.Core.BLL
             var context = new OrangeContext();
             return context.ClientsDao.Select(client => new ClientDTO()
             {
-                Codigo = client.Codigo,
-                CodigoPostal = client.CodigoPostal,
-                Direccion = client.Direccion,
+                //Codigo = client.Codigo,
+                //CodigoPostal = client.CodigoPostal,
+                //Direccion = client.Direccion,
                 Id = client.Id,
-                Localidad = client.Localidad,
-                Nombre = client.Nombre,
-                NombreFantasia = client.NombreFantasia
+                Alias = client.Alias,
+                Code = client.Code,
+                Name = client.Name
             });
         }
 
@@ -44,13 +43,11 @@ namespace DS.OrangeAdmin.Core.BLL
             {
                 Client clientToSave = new Client()
                 {
-                    Id = Guid.NewGuid(),
-                    Codigo = client.Codigo,
-                    CodigoPostal = client.CodigoPostal,
-                    Direccion = client.Direccion,
-                    Localidad = client.Localidad,
-                    Nombre = client.Nombre,
-                    NombreFantasia = client.NombreFantasia
+                    Code = client.Code,
+                    Name = client.Name,
+                    Alias = client.Alias,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now
                 };
 
                 context.ClientsDao.Add(clientToSave);
@@ -58,12 +55,9 @@ namespace DS.OrangeAdmin.Core.BLL
             else
             {
                 Client clientToSave = context.ClientsDao.Find(client.Id);
-                clientToSave.Codigo = client.Codigo;
-                clientToSave.CodigoPostal = client.CodigoPostal;
-                clientToSave.Direccion = client.Direccion;
-                clientToSave.Localidad = client.Localidad;
-                clientToSave.Nombre = client.Nombre;
-                clientToSave.NombreFantasia = client.NombreFantasia;
+                clientToSave.Code = client.Code;
+                clientToSave.Name = client.Name;
+                clientToSave.Alias = client.Alias;
 
                 context.Entry(clientToSave).State = System.Data.Entity.EntityState.Modified;
             }

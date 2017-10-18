@@ -50,7 +50,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\BaseEntity.cs" />
-    <Compile Include="Entities\Foo.cs" />
+    <Compile Include="Entities\ClientType.cs" />
+    <Compile Include="Entities\ContactType.cs" />
+    <Compile Include="Entities\Country.cs" />
+    <Compile Include="Entities\DocumentType.cs" />
+    <Compile Include="Entities\Email.cs" />
+    <Compile Include="Entities\IVAType.cs" />
+    <Compile Include="Entities\PhoneNumber.cs" />
+    <Compile Include="Entities\State.cs" />
+    <Compile Include="Entities\Zone.cs" />
+    <Compile Include="InitialData\MigrateDBConfiguration.cs" />
     <Compile Include="InitialData\OrangeInitializer.cs" />
     <Compile Include="OrangeContext.cs" />
     <Compile Include="Entities\Client.cs" />

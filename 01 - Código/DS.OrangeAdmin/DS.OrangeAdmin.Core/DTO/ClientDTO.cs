@@ -9,16 +9,10 @@ namespace DS.OrangeAdmin.Core.DTO
     public class ClientDTO : BaseDTO
     {
         [DataMember]
-        public string Codigo { get; set; }
+        public string Code { get; set; }
         [DataMember]
-        public string Nombre { get; set; }
+        public string Name { get; set; }
         [DataMember]
-        public string NombreFantasia { get; set; }
-        [DataMember]
-        public string Direccion { get; set; }
-        [DataMember]
-        public string Localidad { get; set; }
-        [DataMember]
-        public string CodigoPostal { get; set; }
+        public string Alias { get; set; }
     }
 }
