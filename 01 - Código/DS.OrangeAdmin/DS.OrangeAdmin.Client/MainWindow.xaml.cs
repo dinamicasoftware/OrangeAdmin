@@ -1,4 +1,5 @@
-﻿using DS.OrangeAdmin.Core.DTO;
+﻿using DS.OrangeAdmin.Client.UI.Clients;
+using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.DataProvider;
 using System;
 using System.Collections.Generic;
@@ -27,12 +28,27 @@ namespace DS.OrangeAdmin.Client
             InitializeComponent();
 
             IDataProvider dataProvider = new LocalDataProvider();
-            var clients = dataProvider.GetClients(); //.Where(cli => cli.Nombre.Length > 8);
-            var clients2 = dataProvider.GetClients();
-            var count = clients.Count();
-            var newClient = new ClientDTO();
-            newClient.Name = "Leo!";
-            dataProvider.SaveClient(newClient);
+            //var clients = dataProvider.GetClients(); //.Where(cli => cli.Nombre.Length > 8);
+            //var clients2 = dataProvider.GetClients();
+            //var count = clients.Count();
+            //var newClient = new ClientDTO();
+            //newClient.Name = "Leo!";
+            //dataProvider.SaveClient(newClient);
+        }
+
+        private void Salir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Clientes_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenNewModalWindow(new ClientsSearch());
+        }
+
+        private void OpenNewModalWindow(Window w)
+        {
+            w.ShowDialog();
         }
     }
 }

@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DS.OrangeAdmin.Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="692.222" Width="1139.444"
+        Background="#E6E6E6"
+        WindowState="Maximized">
     <Grid>
-        <Button>Hola</Button>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Sistema">
+                    <MenuItem Header="_Salir" Click="Salir_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Clientes">
+                    <MenuItem Header="_Consulta" Click="Clientes_Click" />
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
     </Grid>
 </Window>

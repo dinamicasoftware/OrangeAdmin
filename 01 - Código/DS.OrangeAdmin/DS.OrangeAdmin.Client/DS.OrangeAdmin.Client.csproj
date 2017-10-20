@@ -64,6 +64,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\DelegateCommand.cs" />
+    <Compile Include="UI\Clients\ClientsSearch.xaml.cs">
+      <DependentUpon>ClientsSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VM\Clients\ClientsSearchResultVM.cs" />
+    <Compile Include="VM\Clients\ClientsVM.cs" />
+    <Compile Include="VM\Clients\ClientsVMHandler.cs" />
+    <Compile Include="VM\ObservableObject.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,6 +84,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UI\Clients\ClientsSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -114,6 +126,9 @@
       <Project>{0f634621-b605-4d95-8b93-48e8a1ad7727}</Project>
       <Name>DS.OrangeAdmin.DataProvider</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Command\Clients\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
