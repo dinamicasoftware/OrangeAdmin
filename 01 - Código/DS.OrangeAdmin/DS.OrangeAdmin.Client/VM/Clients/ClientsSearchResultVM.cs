@@ -1,6 +1,7 @@
 ﻿using DS.OrangeAdmin.Core.DTO;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -15,9 +16,9 @@ namespace DS.OrangeAdmin.Client.VM.Clients
 
         }
 
-        private List<ClientsVM> _clients;
+        private ObservableCollection<ClientsVM> _clients;
 
-        public List<ClientsVM> Clients
+        public ObservableCollection<ClientsVM> Clients
         {
             get { return _clients; }
             set

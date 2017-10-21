@@ -3,6 +3,7 @@ using DS.OrangeAdmin.Client.VM.Clients;
 using DS.OrangeAdmin.DataProvider;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,17 +33,10 @@ namespace DS.OrangeAdmin.Client.UI.Clients
             dataProvider = new LocalDataProvider();
             vm = new ClientsSearchResultVM
             {
-                Clients = VM.Clients.ClientsVMHandler.GetClients(dataProvider.GetClients()).ToList()
+                Clients = new ObservableCollection<ClientsVM>(ClientsVMHandler.GetClients(dataProvider.GetClients()))
             };
 
             this.DataContext = vm;
-
-            //UI();
         }
-
-        //protected async void UI()
-        //{
-        //    this.grid1.DataContext = (vm as ClientsSearchResultVM).Clients;
-        //}
     }
 }

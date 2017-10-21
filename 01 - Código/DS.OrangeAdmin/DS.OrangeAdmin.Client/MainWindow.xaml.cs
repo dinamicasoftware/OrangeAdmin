@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Syncfusion.Windows.Tools.Controls;
 
 namespace DS.OrangeAdmin.Client
 {
@@ -34,6 +35,11 @@ namespace DS.OrangeAdmin.Client
             //var newClient = new ClientDTO();
             //newClient.Name = "Leo!";
             //dataProvider.SaveClient(newClient);
+
+
+
+            RibbonTextBox _ribbonTextBox = new RibbonTextBox() { Text = "RibbonTextBox" };
+            _ribbonBar2.Items.Add(_ribbonTextBox);
         }
 
         private void Salir_Click(object sender, RoutedEventArgs e)
@@ -44,6 +50,11 @@ namespace DS.OrangeAdmin.Client
         private void Clientes_Click(object sender, RoutedEventArgs e)
         {
             this.OpenNewModalWindow(new ClientsSearch());
+        }
+
+        private void Fight(object sender, RoutedEventArgs e)
+        {
+            this.OpenNewModalWindow(new UI.Experimental.Window1());
         }
 
         private void OpenNewModalWindow(Window w)
