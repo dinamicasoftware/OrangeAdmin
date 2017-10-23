@@ -16,6 +16,8 @@ using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.Core.Queries;
 using DS.OrangeAdmin.DataProvider;
 using DS.OrangeAdmin.Shared;
+using Syncfusion.Windows.Tools.Controls;
+using DS.OrangeAdmin.Client.UI.Clients;
 
 namespace DS.OrangeAdmin.Client
 {
@@ -36,7 +38,29 @@ namespace DS.OrangeAdmin.Client
             var count = clients.Count();
             var newClient = new ClientDTO();
             newClient.Name = "Leo!";
-            dataProvider.SaveClient(newClient);
+            //dataProvider.SaveClient(newClient);
+            RibbonTextBox _ribbonTextBox = new RibbonTextBox() { Text = "RibbonTextBox" };
+            _ribbonBar2.Items.Add(_ribbonTextBox);
+        }
+
+        private void Salir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Clientes_Click(object sender, RoutedEventArgs e)
+        {
+            this.OpenNewModalWindow(new ClientsSearch());
+        }
+
+        private void Fight(object sender, RoutedEventArgs e)
+        {
+            this.OpenNewModalWindow(new UI.Experimental.Window1());
+        }
+
+        private void OpenNewModalWindow(Window w)
+        {
+            w.ShowDialog();
         }
     }
 }

@@ -33,7 +33,7 @@ namespace DS.OrangeAdmin.Client.UI.Clients
             dataProvider = new LocalDataProvider();
             vm = new ClientsSearchResultVM
             {
-                Clients = new ObservableCollection<ClientsVM>(ClientsVMHandler.GetClients(dataProvider.GetClients()))
+                Clients = new ObservableCollection<ClientsVM>(ClientsVMHandler.GetClients(dataProvider.GetClients(new Core.Queries.QueryParameters())))
             };
 
             this.DataContext = vm;
