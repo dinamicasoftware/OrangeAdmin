@@ -8,8 +8,15 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS.OrangeAdmin.Data", "DS.OrangeAdmin.Data\DS.OrangeAdmin.Data.csproj", "{2E175A38-DBA2-409F-8950-15EDCDAD0ACC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS.OrangeAdmin.DataProvider", "DS.OrangeAdmin.DataProvider\DS.OrangeAdmin.DataProvider.csproj", "{0F634621-B605-4D95-8B93-48E8A1AD7727}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C7D826B8-8EFA-40D0-A285-367D47578B6F} = {C7D826B8-8EFA-40D0-A285-367D47578B6F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS.OrangeAdmin.Client", "DS.OrangeAdmin.Client\DS.OrangeAdmin.Client.csproj", "{28968A97-10EB-4895-8EC0-B877E73AA997}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS.OrangeAdmin.Server", "DS.OrangeAdmin.Server\DS.OrangeAdmin.Server.csproj", "{C7D826B8-8EFA-40D0-A285-367D47578B6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS.OrangeAdmin.Shared", "DS.OrangeAdmin.Shared\DS.OrangeAdmin.Shared.csproj", "{D8A8A1A1-63A7-41F7-BCC5-E587BA642153}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +40,14 @@ Global
 		{28968A97-10EB-4895-8EC0-B877E73AA997}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28968A97-10EB-4895-8EC0-B877E73AA997}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28968A97-10EB-4895-8EC0-B877E73AA997}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7D826B8-8EFA-40D0-A285-367D47578B6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7D826B8-8EFA-40D0-A285-367D47578B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7D826B8-8EFA-40D0-A285-367D47578B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7D826B8-8EFA-40D0-A285-367D47578B6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8A8A1A1-63A7-41F7-BCC5-E587BA642153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8A8A1A1-63A7-41F7-BCC5-E587BA642153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8A8A1A1-63A7-41F7-BCC5-E587BA642153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8A8A1A1-63A7-41F7-BCC5-E587BA642153}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

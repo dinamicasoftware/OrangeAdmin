@@ -1,6 +1,4 @@
-﻿using DS.OrangeAdmin.Core.DTO;
-using DS.OrangeAdmin.DataProvider;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DS.OrangeAdmin.Core.DTO;
+using DS.OrangeAdmin.Core.Queries;
+using DS.OrangeAdmin.DataProvider;
+using DS.OrangeAdmin.Shared;
 
 namespace DS.OrangeAdmin.Client
 {
@@ -26,9 +28,11 @@ namespace DS.OrangeAdmin.Client
         {
             InitializeComponent();
 
-            IDataProvider dataProvider = new LocalDataProvider();
-            var clients = dataProvider.GetClients(); //.Where(cli => cli.Nombre.Length > 8);
-            var clients2 = dataProvider.GetClients();
+            IDataProvider dataProvider = new ExternalDataProvider();
+            QueryParameters queryParameters = new QueryParameters();
+            queryParameters.Filtros.Add(client => client.Name == "Leo!");
+            var clients = dataProvider.GetClients(queryParameters); //.Where(cli => cli.Nombre.Length > 8);
+            var clients2 = dataProvider.GetClients(queryParameters).ToList();
             var count = clients.Count();
             var newClient = new ClientDTO();
             newClient.Name = "Leo!";

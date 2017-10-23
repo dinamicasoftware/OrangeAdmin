@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.Core.Operations;
+using DS.OrangeAdmin.Core.Queries;
 
 namespace DS.OrangeAdmin.DataProvider
 {
     public class ExternalDataProvider : IDataProvider
     {
-        public IQueryable<ClientDTO> GetClients()
+        OrangeAdminService.OrangeAdminClient client;
+
+        public ExternalDataProvider()
         {
-            throw new NotImplementedException();
+            this.client = new OrangeAdminService.OrangeAdminClient();
+        }
+
+        public IList<ClientDTO> GetClients(QueryParameters queryParameters)
+        {
+            return this.client.GetClients(new OrangeAdminService.QueryParameters()
+            {
+                Take = queryParameters.Take
+            });
         }
 
         public OperationResult SaveClient(ClientDTO client)

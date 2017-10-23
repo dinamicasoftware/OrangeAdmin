@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using DS.OrangeAdmin.Data.Base;
+using DS.OrangeAdmin.Shared.Entities;
 
 namespace DS.OrangeAdmin.Data.Entities
 {
-    public class Client : BaseEntity
+    public class Client : BaseEntity, IClient
     {
         public string Code { get; set; }
         public string Name { get; set; }

@@ -5,6 +5,10 @@ using DS.OrangeAdmin.Data;
 using DS.OrangeAdmin.Data.Entities;
 using DS.OrangeAdmin.Core.Operations;
 using DS.OrangeAdmin.Core.Base;
+using DS.OrangeAdmin.Core.Mappings;
+using System.Collections.Generic;
+using DS.OrangeAdmin.Shared.Entities;
+using DS.OrangeAdmin.Core.Queries;
 
 namespace DS.OrangeAdmin.Core.BLL
 {
@@ -15,19 +19,24 @@ namespace DS.OrangeAdmin.Core.BLL
 
         }
 
-        public IQueryable<ClientDTO> GetClients()
+        public IList<ClientDTO> GetClients(QueryParameters parameter)
         {
             var context = new OrangeContext();
-            return context.ClientsDao.Select(client => new ClientDTO()
+
+            var query = context.ClientsDao.AsQueryable<IClient>();
+
+            foreach (var filtro in parameter.Filtros)
             {
-                //Codigo = client.Codigo,
-                //CodigoPostal = client.CodigoPostal,
-                //Direccion = client.Direccion,
-                Id = client.Id,
-                Alias = client.Alias,
-                Code = client.Code,
-                Name = client.Name
-            });
+                query = query.Where(filtro);
+            }
+
+            try
+            {
+                return query.ToList().Select(client => EntityToDTO.Map(client)).ToList();
+            }catch(Exception ex)
+            {
+                return null;
+            }
         }
 
         public OperationResult SaveOrUpdate(ClientDTO client)
