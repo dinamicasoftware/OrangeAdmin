@@ -3,6 +3,7 @@ using System.Runtime.Serialization;
 
 namespace DS.OrangeAdmin.Core.Base
 {
+    [DataContract]
     public class BaseDTO
     {
         [DataMember]

@@ -46,17 +46,38 @@
     <Reference Include="Syncfusion.Grid.Base, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Grid.Base451.15.3.0.33\lib\net451\Syncfusion.Grid.Base.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfSkinManager.WPF, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.SfSkinManager.WPF451.15.3.0.33\lib\net451\Syncfusion.SfSkinManager.WPF.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Syncfusion.Shared.Base, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Shared.Base451.15.3.0.33\lib\net451\Syncfusion.Shared.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Shared.Wpf, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Shared.WPF451.15.3.0.33\lib\net451\Syncfusion.Shared.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.Themes.Office2010Black.WPF, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Themes.Office2010Blue.WPF, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Themes.Office2010Silver.WPF, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Themes.Office2013DarkGray.WPF, Version=15.3451.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Themes.Office2013LightGray.WPF, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Themes.Office2013White.WPF, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Themes.Office2016Colorful.WPF, Version=15.3451.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Themes.Office2016DarkGray.WPF, Version=15.3400.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Themes.Office2016White.WPF, Version=15.3451.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Themes.Office365.WPF, Version=15.3451.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Themes.Saffron.WPF, Version=15.3400.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Themes.VisualStudio2013.WPF, Version=15.3451.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.Themes.VisualStudio2015.WPF, Version=15.3450.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Tools.Base, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Tools.Base451.15.3.0.33\lib\net451\Syncfusion.Tools.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Tools.Wpf, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Tools.WPF451.15.3.0.33\lib\net451\Syncfusion.Tools.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.VectorImages.Wpf, Version=15.3451.0.33, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.VectorImages.WPF451.15.3.0.33\lib\net451\Syncfusion.VectorImages.Wpf.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -128,6 +149,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -148,9 +170,212 @@
       <Project>{0f634621-b605-4d95-8b93-48e8a1ad7727}</Project>
       <Name>DS.OrangeAdmin.DataProvider</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DS.OrangeAdmin.Server\DS.OrangeAdmin.Server.csproj">
+      <Project>{c7d826b8-8efa-40d0-a285-367d47578b6f}</Project>
+      <Name>DS.OrangeAdmin.Server</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DS.OrangeAdmin.Shared\DS.OrangeAdmin.Shared.csproj">
+      <Project>{d8a8a1a1-63a7-41f7-bcc5-e587ba642153}</Project>
+      <Name>DS.OrangeAdmin.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Command\Clients\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BlankPage32.png" />
+    <Resource Include="Resources\Bold16.png" />
+    <Resource Include="Resources\cancel.png" />
+    <Resource Include="Resources\ClearFormatting16.png" />
+    <Resource Include="Resources\Close32.png" />
+    <Resource Include="Resources\Copy16.png" />
+    <Resource Include="Resources\CoverPage32.png" />
+    <Resource Include="Resources\Cut16.png" />
+    <Resource Include="Resources\Exit.png" />
+    <Resource Include="Resources\FontColor16.png" />
+    <Resource Include="Resources\FormatPainter16.png" />
+    <Resource Include="Resources\GrowFont16.png" />
+    <Resource Include="Resources\Italic16.png" />
+    <Resource Include="Resources\Open32.png" />
+    <Resource Include="Resources\Options.png" />
+    <Resource Include="Resources\PageBreak32.png" />
+    <Resource Include="Resources\Paste32.png" />
+    <Resource Include="Resources\Picture32.png" />
+    <Resource Include="Resources\protect.png" />
+    <Resource Include="Resources\Save16.png" />
+    <Resource Include="Resources\SaveAs32.png" />
+    <Resource Include="Resources\ShrinkFont16.png" />
+    <Resource Include="Resources\Strikethrough16.png" />
+    <Resource Include="Resources\Subscript16.png" />
+    <Resource Include="Resources\Superscript16.png" />
+    <Resource Include="Resources\TextHighlightColor16.png" />
+    <Resource Include="Resources\Underline16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SampleImages\Backstage.jpg" />
+    <Resource Include="SampleImages\Backstageblack.jpg" />
+    <Resource Include="SampleImages\Backstagesilver.jpg" />
+    <Resource Include="SampleImages\help.png" />
+    <Resource Include="SampleImages\return.jpg" />
+    <Resource Include="SampleImages\start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AlignTextCenter16.png" />
+    <Resource Include="Resources\AlignTextJustify16.png" />
+    <Resource Include="Resources\AlignTextLeft16.png" />
+    <Resource Include="Resources\AlignTextRight16.png" />
+    <Resource Include="Resources\base_business_contacts.png" />
+    <Resource Include="Resources\Bullets16.png" />
+    <Resource Include="Resources\CloseTab32.png" />
+    <Resource Include="Resources\copy.gif" />
+    <Resource Include="Resources\Copy.png" />
+    <Resource Include="Resources\DecreaseIndent16.png" />
+    <Resource Include="Resources\DSB64.png" />
+    <Resource Include="Resources\FinalMark32.png" />
+    <Resource Include="Resources\Find16.png" />
+    <Resource Include="Resources\FlowDirection32.png" />
+    <Resource Include="Resources\FontColor.png" />
+    <Resource Include="Resources\help.gif" />
+    <Resource Include="Resources\Help.png" />
+    <Resource Include="Resources\Help16.png" />
+    <Resource Include="Resources\Hyperlink16.png" />
+    <Resource Include="Resources\Hyperlink32.png" />
+    <Resource Include="Resources\IncreaseIndent16.png" />
+    <Resource Include="Resources\InspectDocument32.png" />
+    <Resource Include="Resources\LineSpacing16.png" />
+    <Resource Include="Resources\Margins32.png" />
+    <Resource Include="Resources\MultilevelList16.png" />
+    <Resource Include="Resources\New32.png" />
+    <Resource Include="Resources\nextpage.png" />
+    <Resource Include="Resources\Numbering16.png" />
+    <Resource Include="Resources\Object16.png" />
+    <Resource Include="Resources\onepage.png" />
+    <Resource Include="Resources\Orientation32.png" />
+    <Resource Include="Resources\OutsideBorders16.png" />
+    <Resource Include="Resources\PageNumber32.png" />
+    <Resource Include="Resources\Paste16.png" />
+    <Resource Include="Resources\previouspage.png" />
+    <Resource Include="Resources\RbB64.png" />
+    <Resource Include="Resources\Redo16.png" />
+    <Resource Include="Resources\replace_16.png" />
+    <Resource Include="Resources\replace_32.png" />
+    <Resource Include="Resources\saveas.gif" />
+    <Resource Include="Resources\Shading16.png" />
+    <Resource Include="Resources\Smile16.png" />
+    <Resource Include="Resources\Sort16.png" />
+    <Resource Include="Resources\Strike.png" />
+    <Resource Include="Resources\syncfusion.png" />
+    <Resource Include="Resources\TextHighlight.png" />
+    <Resource Include="Resources\twopages.gif" />
+    <Resource Include="Resources\Undo16.png" />
+    <Resource Include="Resources\Web.png" />
+    <Resource Include="Resources\zoom.png" />
+    <Resource Include="Resources\Zoom_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\0202_InsertShape_32.png" />
+    <Resource Include="Images\0205_WebInsertHyperlink_32.png" />
+    <Resource Include="Images\0356_NewComment_32.png" />
+    <Resource Include="Images\base_business_contacts.png" />
+    <Resource Include="Images\base_charts.png" />
+    <Resource Include="Images\base_map.png" />
+    <Resource Include="Images\base_paperclip_32.png" />
+    <Resource Include="Images\base_speaker_32.png" />
+    <Resource Include="Images\Blend_Icon\Bold_Icon.png" />
+    <Resource Include="Images\Blend_Icon\Bullet_Icon.png" />
+    <Resource Include="Images\Blend_Icon\CenterAlignment_Icon.png" />
+    <Resource Include="Images\Blend_Icon\Comment_Icon.png" />
+    <Resource Include="Images\Blend_Icon\Copy_Icon.png" />
+    <Resource Include="Images\Blend_Icon\Cut_Icon.png" />
+    <Resource Include="Images\Blend_Icon\DecreaseFontSize_Icon.png" />
+    <Resource Include="Images\Blend_Icon\DeleteColumn_Icon.png" />
+    <Resource Include="Images\Blend_Icon\DeleteComment_Icon.png" />
+    <Resource Include="Images\Blend_Icon\DeleteEntireTable_Icon.png" />
+    <Resource Include="Images\Blend_Icon\DeleteRow_Icon.png" />
+    <Resource Include="Images\Blend_Icon\DeleteTable_Icon.png" />
+    <Resource Include="Images\Blend_Icon\FontColor_Icon.png" />
+    <Resource Include="Images\Blend_Icon\Font_Icon.png" />
+    <Resource Include="Images\Blend_Icon\Highlight_Icon.png" />
+    <Resource Include="Images\Blend_Icon\Hyperlink_Icon.png" />
+    <Resource Include="Images\Blend_Icon\IncreaseFontSize_Icon.png" />
+    <Resource Include="Images\Blend_Icon\InsertColumnAfter_Icon.png" />
+    <Resource Include="Images\Blend_Icon\InsertColumnBefore_Icon.png" />
+    <Resource Include="Images\Blend_Icon\InsertRowAfter_Icon.png" />
+    <Resource Include="Images\Blend_Icon\InsertRowBefore_Icon.png" />
+    <Resource Include="Images\Blend_Icon\InsertTable_Icon.png" />
+    <Resource Include="Images\Blend_Icon\Italic_Icon.png" />
+    <Resource Include="Images\Blend_Icon\JustifyAlignment_Icon.png" />
+    <Resource Include="Images\Blend_Icon\LeftAlignment_Icon.png" />
+    <Resource Include="Images\Blend_Icon\MergeCells_Icon.png" />
+    <Resource Include="Images\Blend_Icon\Numbering_Icon.png" />
+    <Resource Include="Images\Blend_Icon\Paragraph_Icon.png" />
+    <Resource Include="Images\Blend_Icon\Paste_Icon.png" />
+    <Resource Include="Images\Blend_Icon\RemoveHyperlink_Icon.png" />
+    <Resource Include="Images\Blend_Icon\RightAlignment_Icon.png" />
+    <Resource Include="Images\Blend_Icon\Underline_Icon.png" />
+    <Resource Include="Images\Blue.png" />
+    <Resource Include="Images\BlueLarge.png" />
+    <Resource Include="Images\disable.png" />
+    <Resource Include="Images\Gray.png" />
+    <Resource Include="Images\GrayLarge.png" />
+    <Resource Include="Images\Green.png" />
+    <Resource Include="Images\GreenLarge.png" />
+    <Resource Include="Images\help.png" />
+    <Resource Include="Images\modal.png" />
+    <Resource Include="Images\Orange.png" />
+    <Resource Include="Images\OrangeLarge.png" />
+    <Resource Include="Images\Picture.png" />
+    <Resource Include="Images\Pink.png" />
+    <Resource Include="Images\PinkLarge.png" />
+    <Resource Include="Images\print-icon.png" />
+    <Resource Include="Images\PrintArea.png" />
+    <Resource Include="Images\PrintLayout.png" />
+    <Resource Include="Images\printPreview.png" />
+    <Resource Include="Images\ReadMode.png" />
+    <Resource Include="Images\Red.png" />
+    <Resource Include="Images\RedLarge.png" />
+    <Resource Include="Images\rtl.png" />
+    <Resource Include="Images\Table_32.png" />
+    <Resource Include="Images\Web.png" />
+    <Resource Include="Images\Yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SampleImages\12.jpg" />
+    <Resource Include="SampleImages\3D Boxes.png" />
+    <Resource Include="SampleImages\9.jpg" />
+    <Resource Include="SampleImages\Backstage.png" />
+    <Resource Include="SampleImages\Backstageblack.png" />
+    <Resource Include="SampleImages\Backstagesilver.png" />
+    <Resource Include="SampleImages\Birds.png" />
+    <Resource Include="SampleImages\bluebackground.jpg" />
+    <Resource Include="SampleImages\Bubbles.png" />
+    <Resource Include="SampleImages\Butterflies.png" />
+    <Resource Include="SampleImages\Circle Bands.png" />
+    <Resource Include="SampleImages\Circles.png" />
+    <Resource Include="SampleImages\Copy of Save.png" />
+    <Resource Include="SampleImages\Dotted Arrows.png" />
+    <Resource Include="SampleImages\exit.png" />
+    <Resource Include="SampleImages\Floweral.png" />
+    <Resource Include="SampleImages\Lines.png" />
+    <Resource Include="SampleImages\load.png" />
+    <Resource Include="SampleImages\Nodes.png" />
+    <Resource Include="SampleImages\options.png" />
+    <Resource Include="SampleImages\print.png" />
+    <Resource Include="SampleImages\reset.png" />
+    <Resource Include="SampleImages\return.png" />
+    <Resource Include="SampleImages\Ribbon2.png" />
+    <Resource Include="SampleImages\Rounded Squares.png" />
+    <Resource Include="SampleImages\security.png" />
+    <Resource Include="SampleImages\sharing.png" />
+    <Resource Include="SampleImages\Snowflakes.png" />
+    <Resource Include="SampleImages\Squash.png" />
+    <Resource Include="SampleImages\transparent-brush-image.png" />
+    <Resource Include="SampleImages\TransparentBackground.jpg" />
+    <Resource Include="SampleImages\Transparent_Image.jpg" />
+    <Resource Include="SampleImages\versions.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="App.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
