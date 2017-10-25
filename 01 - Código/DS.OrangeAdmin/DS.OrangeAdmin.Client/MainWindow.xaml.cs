@@ -1,11 +1,8 @@
-﻿using DS.OrangeAdmin.Client.UI.Clients;
-using DS.OrangeAdmin.Core.DTO;
-using DS.OrangeAdmin.DataProvider;
-using System;
+﻿using System;
+using System.IO;
+using Microsoft.Win32;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,15 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Markup;
 using Syncfusion.Windows.Tools.Controls;
+using Syncfusion.Windows.Tools;
+using System.Threading;
+using System.Collections;
+using System.Diagnostics;
+using System.ComponentModel;
+using Syncfusion.Windows.Shared;
+using System.Globalization;
+using System.Windows.Threading;
+using DS.OrangeAdmin.DataProvider;
+using Syncfusion.SfSkinManager;
 
 namespace DS.OrangeAdmin.Client
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -38,28 +42,15 @@ namespace DS.OrangeAdmin.Client
 
 
 
-            RibbonTextBox _ribbonTextBox = new RibbonTextBox() { Text = "RibbonTextBox" };
-            _ribbonBar2.Items.Add(_ribbonTextBox);
+            //RibbonTextBox _ribbonTextBox = new RibbonTextBox() { Text = "RibbonTextBox" };
+            //_ribbonBar2.Items.Add(_ribbonTextBox);
+
         }
 
-        private void Salir_Click(object sender, RoutedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.Close();
-        }
-
-        private void Clientes_Click(object sender, RoutedEventArgs e)
-        {
-            this.OpenNewModalWindow(new ClientsSearch());
-        }
-
-        private void Fight(object sender, RoutedEventArgs e)
-        {
-            this.OpenNewModalWindow(new UI.Experimental.Window1());
-        }
-
-        private void OpenNewModalWindow(Window w)
-        {
-            w.ShowDialog();
+            SfSkinManager.SetVisualStyle(this, (VisualStyles)Enum.Parse(typeof(VisualStyles), ((sender as ComboBox).SelectedItem as ComboBoxItem).Content.ToString()));
         }
     }
+
 }
