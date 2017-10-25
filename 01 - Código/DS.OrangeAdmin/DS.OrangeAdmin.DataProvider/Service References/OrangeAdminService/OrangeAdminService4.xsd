@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:45985/OrangeAdminService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.Base" />
+  <xs:complexType name="ArrayOfClientDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClientDTO" nillable="true" type="tns:ClientDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClientDTO" nillable="true" type="tns:ArrayOfClientDTO" />
+  <xs:complexType name="ClientDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.Base" base="q1:BaseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Alias" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClientType" nillable="true" type="tns:ClientTypeDTO" />
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DocumentNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DocumentType" nillable="true" type="tns:DocumentTypeDTO" />
+          <xs:element minOccurs="0" name="Emails" nillable="true" type="tns:ArrayOfEmailDTO" />
+          <xs:element minOccurs="0" name="IVA" nillable="true" type="tns:IVATypeDTO" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Observation" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClientDTO" nillable="true" type="tns:ClientDTO" />
+  <xs:complexType name="ClientTypeDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.Base" base="q2:BaseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClientTypeDTO" nillable="true" type="tns:ClientTypeDTO" />
+  <xs:complexType name="DocumentTypeDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.Base" base="q3:BaseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DocumentTypeDTO" nillable="true" type="tns:DocumentTypeDTO" />
+  <xs:complexType name="ArrayOfEmailDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmailDTO" nillable="true" type="tns:EmailDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmailDTO" nillable="true" type="tns:ArrayOfEmailDTO" />
+  <xs:complexType name="EmailDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.Base" base="q4:BaseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContactType" nillable="true" type="tns:ContactTypeDTO" />
+          <xs:element minOccurs="0" name="Default" type="xs:boolean" />
+          <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="EmailDTO" nillable="true" type="tns:EmailDTO" />
+  <xs:complexType name="ContactTypeDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.Base" base="q5:BaseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ContactTypeDTO" nillable="true" type="tns:ContactTypeDTO" />
+  <xs:complexType name="IVATypeDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.Base" base="q6:BaseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="IVATypeDTO" nillable="true" type="tns:IVATypeDTO" />
+</xs:schema>

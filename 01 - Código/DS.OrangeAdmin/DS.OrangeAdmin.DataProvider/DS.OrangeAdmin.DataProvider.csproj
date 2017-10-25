@@ -30,8 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aq.ExpressionJsonSerializer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aq.ExpressionJsonSerializer.0.18\lib\net45\Aq.ExpressionJsonSerializer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,12 +54,70 @@
     <Compile Include="IDataProvider.cs" />
     <Compile Include="LocalDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\OrangeAdminService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DS.OrangeAdmin.Core\DS.OrangeAdmin.Core.csproj">
       <Project>{692ef50d-73ac-4f91-98da-af1ac85fe7f2}</Project>
       <Name>DS.OrangeAdmin.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DS.OrangeAdmin.Server\DS.OrangeAdmin.Server.csproj">
+      <Project>{c7d826b8-8efa-40d0-a285-367d47578b6f}</Project>
+      <Name>DS.OrangeAdmin.Server</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DS.OrangeAdmin.Shared\DS.OrangeAdmin.Shared.csproj">
+      <Project>{d8a8a1a1-63a7-41f7-bcc5-e587ba642153}</Project>
+      <Name>DS.OrangeAdmin.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\DS.OrangeAdmin.Core.DTO.ClientDTO.datasource" />
+    <None Include="Service References\OrangeAdminService\OrangeAdminService.wsdl" />
+    <None Include="Service References\OrangeAdminService\OrangeAdminService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrangeAdminService\OrangeAdminService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrangeAdminService\OrangeAdminService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrangeAdminService\OrangeAdminService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrangeAdminService\OrangeAdminService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrangeAdminService\OrangeAdminService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\OrangeAdminService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrangeAdminService\OrangeAdminService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrangeAdminService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrangeAdminService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrangeAdminService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

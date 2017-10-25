@@ -80,14 +80,20 @@
     <Compile Include="DTO\PhoneNumberDTO.cs" />
     <Compile Include="DTO\StateDTO.cs" />
     <Compile Include="DTO\ZoneDTO.cs" />
+    <Compile Include="Mappings\EntityToDTO.cs" />
     <Compile Include="Operations\Operation.cs" />
     <Compile Include="Operations\OperationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\QueryParameters.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DS.OrangeAdmin.Data\DS.OrangeAdmin.Data.csproj">
       <Project>{2e175a38-dba2-409f-8950-15edcdad0acc}</Project>
       <Name>DS.OrangeAdmin.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DS.OrangeAdmin.Shared\DS.OrangeAdmin.Shared.csproj">
+      <Project>{d8a8a1a1-63a7-41f7-bcc5-e587ba642153}</Project>
+      <Name>DS.OrangeAdmin.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
