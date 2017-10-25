@@ -21,7 +21,7 @@ namespace DS.OrangeAdmin.Client.UI.Clients
     /// <summary>
     /// Lógica de interacción para ClientsSearch.xaml
     /// </summary>
-    public partial class ClientsSearch : Window
+    public partial class ClientsSearch : ContentControl
     {
         private IDataProvider dataProvider;
         private ObservableObject vm;
@@ -29,7 +29,7 @@ namespace DS.OrangeAdmin.Client.UI.Clients
         public ClientsSearch()
         {
             InitializeComponent();
-
+            
             dataProvider = new LocalDataProvider();
             vm = new ClientsSearchResultVM
             {

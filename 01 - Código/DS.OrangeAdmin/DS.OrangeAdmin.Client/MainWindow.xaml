@@ -9,27 +9,30 @@
         Title="Orange Admin" Height="692.222" Width="1139.444"
         Background="#E6E6E6"
         WindowState="Maximized">
-    <Grid>
-        <syncfusion:Ribbon Name="_ribbon" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+    <StackPanel>
+        <syncfusion:MenuAdv VerticalAlignment="Top">
+            <syncfusion:MenuItemAdv Header="Productos" >
+                <syncfusion:MenuItemAdv Header="Business Intelligence" />
+                <syncfusion:MenuItemAdv Header="User Interface" >
+                    <syncfusion:MenuItemAdv Header="WPF">
+                        <syncfusion:MenuItemAdv Header="Tools"/>
+                        <syncfusion:MenuItemAdv Header="Chart"/>
+                        <syncfusion:MenuItemAdv Header="Grid"/>
+                        <syncfusion:MenuItemAdv Header="Diagram"/>
+                        <syncfusion:MenuItemAdv Header="Gauge"/>
+                        <syncfusion:MenuItemAdv Header="Schedule"/>
+                        <syncfusion:MenuItemAdv Header="Edit"/>
+                    </syncfusion:MenuItemAdv>
+                    <syncfusion:MenuItemAdv Header="Silverlight "/>
+                    <syncfusion:MenuItemAdv Header="Reporting" />
+                </syncfusion:MenuItemAdv>
+            </syncfusion:MenuItemAdv>
+            <syncfusion:MenuItemAdv Header="Clientes" >
+                <syncfusion:MenuItemAdv Header="A/B/M" Click="Clientes_Click"/>
+            </syncfusion:MenuItemAdv>
+        </syncfusion:MenuAdv>
+        <syncfusion:DockingManager Name="_mdiContainer" UseDocumentContainer="True" ContainerMode="TDI" VerticalAlignment="Center"  Height="800">
 
-            <syncfusion:RibbonTab Name="_ribbonTab1" Caption="HOME"  IsChecked="True">
-
-                <syncfusion:RibbonBar Name="_ribbonBar2" Header="RibbonBar1">
-
-                    <syncfusion:RibbonButton   Label="Cut"/>
-
-                </syncfusion:RibbonBar>
-
-                <syncfusion:RibbonBar  Name="_ribbonBar22" Width="150" Header="RibbonBar2">
-
-                    <syncfusion:RibbonTextBox  Width="140" Text="RibbonTextBox"></syncfusion:RibbonTextBox>
-
-                </syncfusion:RibbonBar>
-
-            </syncfusion:RibbonTab>
-
-            <syncfusion:RibbonTab Caption="EDIT"  IsChecked="False"/>
-
-        </syncfusion:Ribbon>
-    </Grid>
+        </syncfusion:DockingManager>
+    </StackPanel>
 </Window>

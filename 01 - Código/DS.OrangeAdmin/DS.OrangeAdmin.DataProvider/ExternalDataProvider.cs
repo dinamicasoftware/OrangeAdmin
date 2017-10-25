@@ -4,6 +4,8 @@ using System.Linq;
 using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.Core.Operations;
 using DS.OrangeAdmin.Core.Queries;
+using DS.OrangeAdmin.Shared.Serializer;
+using DS.OrangeAdmin.Shared.Expressions;
 
 namespace DS.OrangeAdmin.DataProvider
 {
@@ -20,6 +22,7 @@ namespace DS.OrangeAdmin.DataProvider
         {
             return this.client.GetClients(new OrangeAdminService.QueryParameters()
             {
+                Filtros = queryParameters.Filtros.Select(filtro => JsonNetAdapter.Serialize(new FixVisitor().Visit(filtro))).ToArray(),
                 Take = queryParameters.Take
             });
         }

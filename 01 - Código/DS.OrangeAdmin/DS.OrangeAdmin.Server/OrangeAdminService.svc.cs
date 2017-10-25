@@ -8,6 +8,9 @@ using DS.OrangeAdmin.Core;
 using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.Server.Queries;
 using DS.OrangeAdmin.Core.Operations;
+using DS.OrangeAdmin.Shared.Serializer;
+using System.Linq.Expressions;
+using DS.OrangeAdmin.Shared.Entities;
 
 namespace DS.OrangeAdmin.Server
 {
@@ -19,6 +22,7 @@ namespace DS.OrangeAdmin.Server
         {
             Core.Queries.QueryParameters coreParameters = new Core.Queries.QueryParameters()
             {
+                Filtros = queryParameters.Filtros.Select(filtro => JsonNetAdapter.Deserialize<Expression<Func<IClient, bool>>>(filtro)).ToList(),
                 Take = queryParameters.Take
             };
 
