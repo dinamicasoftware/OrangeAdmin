@@ -170,14 +170,6 @@
       <Project>{0f634621-b605-4d95-8b93-48e8a1ad7727}</Project>
       <Name>DS.OrangeAdmin.DataProvider</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DS.OrangeAdmin.Server\DS.OrangeAdmin.Server.csproj">
-      <Project>{c7d826b8-8efa-40d0-a285-367d47578b6f}</Project>
-      <Name>DS.OrangeAdmin.Server</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DS.OrangeAdmin.Shared\DS.OrangeAdmin.Shared.csproj">
-      <Project>{d8a8a1a1-63a7-41f7-bcc5-e587ba642153}</Project>
-      <Name>DS.OrangeAdmin.Shared</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Command\Clients\" />

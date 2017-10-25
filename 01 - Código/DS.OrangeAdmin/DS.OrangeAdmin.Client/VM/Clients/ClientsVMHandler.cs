@@ -9,7 +9,7 @@ namespace DS.OrangeAdmin.Client.VM.Clients
 {
     public static class ClientsVMHandler
     {
-        public static IEnumerable<ClientsVM> GetClients(IList<ClientDTO> clientsQuery)
+        public static IQueryable<ClientsVM> GetClients(IQueryable<ClientDTO> clientsQuery)
         {
             return clientsQuery.Select(x => new ClientsVM { Nombre = x.Name });
         }

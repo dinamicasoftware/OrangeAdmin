@@ -72,12 +72,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DS.OrangeAdmin.Shared\DS.OrangeAdmin.Shared.csproj">
-      <Project>{d8a8a1a1-63a7-41f7-bcc5-e587ba642153}</Project>
-      <Name>DS.OrangeAdmin.Shared</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
