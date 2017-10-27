@@ -6,6 +6,7 @@ using DS.OrangeAdmin.Core.Operations;
 using DS.OrangeAdmin.Core.Queries;
 using DS.OrangeAdmin.Shared.Serializer;
 using DS.OrangeAdmin.Shared.Expressions;
+using DS.OrangeAdmin.Shared.Entities;
 
 namespace DS.OrangeAdmin.DataProvider
 {
@@ -18,13 +19,13 @@ namespace DS.OrangeAdmin.DataProvider
             this.client = new OrangeAdminService.OrangeAdminClient();
         }
 
-        public IList<ClientDTO> GetClients(QueryParameters queryParameters)
+        public OperationResult<IList<ClientDTO>> GetClients(QueryParameters<IClient> queryParameters)
         {
-            return this.client.GetClients(new OrangeAdminService.QueryParameters()
+            return null;/*this.client.GetClients(new OrangeAdminService.QueryParameters()
             {
                 Filtros = queryParameters.Filtros.Select(filtro => JsonNetAdapter.Serialize(new FixVisitor().Visit(filtro))).ToArray(),
                 Take = queryParameters.Take
-            });
+            });*/
         }
 
         public OperationResult SaveClient(ClientDTO client)

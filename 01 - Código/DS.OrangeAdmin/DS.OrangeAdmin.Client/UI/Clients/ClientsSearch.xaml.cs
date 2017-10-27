@@ -1,6 +1,7 @@
 ﻿using DS.OrangeAdmin.Client.VM;
 using DS.OrangeAdmin.Client.VM.Clients;
 using DS.OrangeAdmin.DataProvider;
+using DS.OrangeAdmin.Shared.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,7 +34,7 @@ namespace DS.OrangeAdmin.Client.UI.Clients
             dataProvider = new LocalDataProvider();
             vm = new ClientsSearchResultVM
             {
-                Clients = new ObservableCollection<ClientsVM>(ClientsVMHandler.GetClients(dataProvider.GetClients(new Core.Queries.QueryParameters())))
+                Clients = new ObservableCollection<ClientsVM>(ClientsVMHandler.GetClients(dataProvider.GetClients(new Core.Queries.QueryParameters<IClient>()).Result))
             };
 
             this.DataContext = vm;

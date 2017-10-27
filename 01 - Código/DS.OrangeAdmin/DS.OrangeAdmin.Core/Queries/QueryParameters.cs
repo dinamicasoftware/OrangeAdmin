@@ -8,14 +8,14 @@ using DS.OrangeAdmin.Shared.Entities;
 
 namespace DS.OrangeAdmin.Core.Queries
 {
-    public class QueryParameters
+    public class QueryParameters<T>
     {
         public QueryParameters()
         {
-            this.Filtros = new List<Expression<Func<IClient, bool>>>();
+            this.Filtros = new List<Expression<Func<T, bool>>>();
         }
 
-        public IList<Expression<Func<IClient, bool>>> Filtros { get; set; }
+        public IList<Expression<Func<T, bool>>> Filtros { get; set; }
         public int Take { get; set; }
     }
 }

@@ -18,6 +18,7 @@ using DS.OrangeAdmin.DataProvider;
 using DS.OrangeAdmin.Shared;
 using Syncfusion.Windows.Tools.Controls;
 using DS.OrangeAdmin.Client.UI.Clients;
+using DS.OrangeAdmin.Shared.Entities;
 
 namespace DS.OrangeAdmin.Client
 {
@@ -31,11 +32,16 @@ namespace DS.OrangeAdmin.Client
             InitializeComponent();
 
             IDataProvider dataProvider = new LocalDataProvider();
-            QueryParameters queryParameters = new QueryParameters();
+            QueryParameters<IClient> queryParameters = new QueryParameters<IClient>();
             var nombre = "Leo!";
+            ClientDTO clt = new ClientDTO();
+            queryParameters.Filtros.Add(client => client.Name == "Leo!");
+            queryParameters.Filtros.Add(client => client.Name.Length < 8);
+            var clients = dataProvider.GetClients(queryParameters).Result; //.Where(cli => cli.Nombre.Length > 8);
+            //queryParameters.Filtros.Add(client => client.Name == client.Alias);
             queryParameters.Filtros.Add(client => client.Name == nombre);
-            var clients = dataProvider.GetClients(queryParameters); //.Where(cli => cli.Nombre.Length > 8);
-            var clients2 = dataProvider.GetClients(queryParameters).ToList();
+            queryParameters.Filtros.Add(client => client.Id == clients.FirstOrDefault().Id);
+            var clients2 = dataProvider.GetClients(queryParameters);
             var count = clients.Count();
             var newClient = new ClientDTO();
             newClient.Name = "Leo!";

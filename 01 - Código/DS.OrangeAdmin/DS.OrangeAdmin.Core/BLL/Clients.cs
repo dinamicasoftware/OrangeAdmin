@@ -19,7 +19,7 @@ namespace DS.OrangeAdmin.Core.BLL
 
         }
 
-        public IList<ClientDTO> GetClients(QueryParameters parameter)
+        public OperationResult<IList<ClientDTO>> GetClients(QueryParameters<IClient> parameter)
         {
             var context = new OrangeContext();
 
@@ -32,10 +32,11 @@ namespace DS.OrangeAdmin.Core.BLL
 
             try
             {
-                return query.ToList().Select(client => EntityToDTO.Map(client)).ToList();
-            }catch(Exception ex)
+                return new OperationResult<IList<ClientDTO>>(query.ToList().Select(client => EntityToDTO.Map(client)).ToList());
+            }
+            catch (Exception ex)
             {
-                return null;
+                return new OperationResult<IList<ClientDTO>>(false, ex.ToString());
             }
         }
 

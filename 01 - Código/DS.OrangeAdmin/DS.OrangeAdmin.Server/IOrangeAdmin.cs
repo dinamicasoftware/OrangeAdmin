@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
 using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.Server.Queries;
+using DS.OrangeAdmin.Core.Operations;
 
 namespace DS.OrangeAdmin.Server
 {
@@ -16,7 +13,7 @@ namespace DS.OrangeAdmin.Server
     {
 
         [OperationContract]
-        IList<ClientDTO> GetClients(QueryParameters queryParameters);
+        OperationResult<IList<ClientDTO>> GetClients(QueryParameters queryParameters);
        //void GetClients(QueryParameters queryParameters);
         //void GetClients();
     }

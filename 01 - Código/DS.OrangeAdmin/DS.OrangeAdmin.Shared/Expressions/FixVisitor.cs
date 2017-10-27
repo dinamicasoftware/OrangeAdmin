@@ -5,29 +5,51 @@ namespace DS.OrangeAdmin.Shared.Expressions
 {
     public class FixVisitor : ExpressionVisitor
     {
-        bool IsMemeberAccessOfAConstant(Expression exp)
+        public T Visit<T>(T expression) where T : Expression
         {
-            if (exp.NodeType == ExpressionType.MemberAccess)
-            {
-                var memberAccess = (MemberExpression)exp;
-                if (memberAccess.Expression.NodeType == ExpressionType.Constant)
-                    return true;
-                return IsMemeberAccessOfAConstant(memberAccess.Expression);
-            }
-
-            return false;
+            return base.Visit(expression) as T;
         }
 
-        protected override Expression VisitMember(MemberExpression node)
+        protected override Expression VisitBinary(BinaryExpression node)
         {
-            if (IsMemeberAccessOfAConstant(node) && node.Type == typeof(string))
+            if (node.Right.Type == typeof(Guid))
             {
-                var item = Expression.Lambda<Func<string>>(node);
+                var item = Expression.Lambda<Func<Guid>>(node.Right);
                 var value = item.Compile()();
-                return Expression.Constant(value, typeof(string));
+                var constant = Expression.Constant(value);
+                return node.Update(node.Left, node.Conversion, constant);
             }
+            else
+            {
+                bool evalueteExpression;
+                if (node.Right is ConstantExpression)
+                {
+                    evalueteExpression = false;
+                }
+                else
+                {
+                    if (node.Right is MemberExpression)
+                    {
+                        evalueteExpression = (node.Left as MemberExpression)?.Expression != (node.Right as MemberExpression)?.Expression;
+                    }
+                    else
+                    {
+                        evalueteExpression = true;
+                    }
+                }
 
-            return base.VisitMember(node);
+                if (evalueteExpression)
+                {
+                    var item = Expression.Lambda<Func<object>>(node.Right);
+                    var value = item.Compile()();
+                    var constant = Expression.Constant(value);
+                    return node.Update(node.Left, node.Conversion, constant);
+                }
+                else
+                {
+                    return base.VisitBinary(node);
+                }
+            }
         }
     }
 }
