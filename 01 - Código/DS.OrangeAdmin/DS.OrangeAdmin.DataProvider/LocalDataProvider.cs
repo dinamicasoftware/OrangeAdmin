@@ -7,23 +7,24 @@ using DS.OrangeAdmin.Core.Operations;
 using DS.OrangeAdmin.Core.Queries;
 using DS.OrangeAdmin.Shared.Entities;
 using DS.OrangeAdmin.Shared.Expressions;
+using System.Threading.Tasks;
 
 namespace DS.OrangeAdmin.DataProvider
 {
     public class LocalDataProvider : IDataProvider
     {
-        public OperationResult<IList<ClientDTO>> GetClients(QueryParameters<IClient> queryParameters)
+        public async Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters<IClient> queryParameters)
         {
-            return BusinessProvider.Clients.GetClients(new QueryParameters<IClient>()
+            return await BusinessProvider.Clients.GetClients(new QueryParameters<IClient>()
             {
                 Filtros = queryParameters.Filtros.Select(filtro => new FixVisitor().Visit(filtro)).ToArray(),
                 Take = queryParameters.Take
             });
         }
 
-        public OperationResult SaveClient(ClientDTO client)
+        public async Task<OperationResult> SaveClient(ClientDTO client)
         {
-            return BusinessProvider.Clients.SaveOrUpdate(client);
+            return await BusinessProvider.Clients.SaveOrUpdate(client);
         }
     }
 }

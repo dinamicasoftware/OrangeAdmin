@@ -6,8 +6,9 @@
       <xsd:import schemaLocation="http://localhost:45985/OrangeAdminService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:45985/OrangeAdminService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Server.Queries" />
       <xsd:import schemaLocation="http://localhost:45985/OrangeAdminService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://localhost:45985/OrangeAdminService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.DTO" />
-      <xsd:import schemaLocation="http://localhost:45985/OrangeAdminService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.Base" />
+      <xsd:import schemaLocation="http://localhost:45985/OrangeAdminService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.Operations" />
+      <xsd:import schemaLocation="http://localhost:45985/OrangeAdminService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.DTO" />
+      <xsd:import schemaLocation="http://localhost:45985/OrangeAdminService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.Base" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IOrangeAdmin_GetClients_InputMessage">
@@ -16,16 +17,35 @@
   <wsdl:message name="IOrangeAdmin_GetClients_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetClientsResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrangeAdmin_SaveClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveClient" />
+  </wsdl:message>
+  <wsdl:message name="IOrangeAdmin_SaveClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveClientResponse" />
+  </wsdl:message>
   <wsdl:portType name="IOrangeAdmin">
     <wsdl:operation name="GetClients">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrangeAdmin/GetClients" message="tns:IOrangeAdmin_GetClients_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrangeAdmin/GetClientsResponse" message="tns:IOrangeAdmin_GetClients_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrangeAdmin/SaveClient" message="tns:IOrangeAdmin_SaveClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrangeAdmin/SaveClientResponse" message="tns:IOrangeAdmin_SaveClient_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOrangeAdmin" type="tns:IOrangeAdmin">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetClients">
       <soap:operation soapAction="http://tempuri.org/IOrangeAdmin/GetClients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveClient">
+      <soap:operation soapAction="http://tempuri.org/IOrangeAdmin/SaveClient" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

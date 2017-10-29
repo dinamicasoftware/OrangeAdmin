@@ -1,12 +1,13 @@
 ﻿using System;
 using DS.OrangeAdmin.Core.Operations;
 using System.Data.Entity.Infrastructure;
+using System.Threading.Tasks;
 
 namespace DS.OrangeAdmin.Core.Base
 {
     public abstract class BaseBll
     {
-        protected OperationResult safeOperation<T>(Operation<T> operation, T param)
+        protected async Task<OperationResult> safeOperation<T>(Operation<T> operation, T param)
         {
             OperationResult operationResult;
             bool retryOperation;
@@ -16,7 +17,7 @@ namespace DS.OrangeAdmin.Core.Base
             {
                 try
                 {
-                    operationResult = operation(param);
+                    operationResult = await operation(param);
                     retryOperation = false;
                 }
                 catch (DbUpdateConcurrencyException ex)

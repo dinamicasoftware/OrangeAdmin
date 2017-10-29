@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace DS.OrangeAdmin.Core.Operations
 {
-    public delegate OperationResult Operation<T>(T param);
+    public delegate Task<OperationResult> Operation<T>(T param);
 }

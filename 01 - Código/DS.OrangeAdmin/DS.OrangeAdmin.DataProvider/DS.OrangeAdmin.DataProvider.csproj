@@ -81,6 +81,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DS.OrangeAdmin.Core.DTO.ClientDTO.datasource" />
+    <None Include="Properties\DataSources\DS.OrangeAdmin.Core.Operations.OperationResult.datasource" />
     <None Include="Service References\OrangeAdminService\OrangeAdminService.wsdl" />
     <None Include="Service References\OrangeAdminService\OrangeAdminService.xsd">
       <SubType>Designer</SubType>
@@ -114,6 +115,9 @@
     <None Include="Service References\OrangeAdminService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\OrangeAdminService\OrangeAdminService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\OrangeAdminService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

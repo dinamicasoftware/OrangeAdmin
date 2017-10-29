@@ -37,11 +37,11 @@ namespace DS.OrangeAdmin.Client
             ClientDTO clt = new ClientDTO();
             queryParameters.Filtros.Add(client => client.Name == "Leo!");
             queryParameters.Filtros.Add(client => client.Name.Length < 8);
-            var clients = dataProvider.GetClients(queryParameters).Result; //.Where(cli => cli.Nombre.Length > 8);
+            var clients = dataProvider.GetClients(queryParameters).Result.Result; //.Where(cli => cli.Nombre.Length > 8);
             //queryParameters.Filtros.Add(client => client.Name == client.Alias);
             queryParameters.Filtros.Add(client => client.Name == nombre);
             queryParameters.Filtros.Add(client => client.Id == clients.FirstOrDefault().Id);
-            var clients2 = dataProvider.GetClients(queryParameters);
+            var clients2 = dataProvider.GetClients(queryParameters).Result.Result;
             var count = clients.Count();
             var newClient = new ClientDTO();
             newClient.Name = "Leo!";

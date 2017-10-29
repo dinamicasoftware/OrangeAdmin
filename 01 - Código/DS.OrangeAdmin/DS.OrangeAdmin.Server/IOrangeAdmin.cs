@@ -4,6 +4,7 @@ using System.ServiceModel;
 using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.Server.Queries;
 using DS.OrangeAdmin.Core.Operations;
+using System.Threading.Tasks;
 
 namespace DS.OrangeAdmin.Server
 {
@@ -11,10 +12,9 @@ namespace DS.OrangeAdmin.Server
     [ServiceContract]
     public interface IOrangeAdmin
     {
-
         [OperationContract]
-        OperationResult<IList<ClientDTO>> GetClients(QueryParameters queryParameters);
-       //void GetClients(QueryParameters queryParameters);
-        //void GetClients();
+        Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters queryParameters);
+        [OperationContract]
+        Task<OperationResult> SaveClient(ClientDTO client);
     }
 }

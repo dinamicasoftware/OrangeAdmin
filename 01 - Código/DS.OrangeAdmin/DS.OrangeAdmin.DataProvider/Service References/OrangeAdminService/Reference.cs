@@ -9,80 +9,24 @@
 //------------------------------------------------------------------------------
 
 namespace DS.OrangeAdmin.DataProvider.OrangeAdminService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="QueryParameters", Namespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Server.Queries")]
-    [System.SerializableAttribute()]
-    public partial class QueryParameters : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] FiltrosField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TakeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Filtros {
-            get {
-                return this.FiltrosField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FiltrosField, value) != true)) {
-                    this.FiltrosField = value;
-                    this.RaisePropertyChanged("Filtros");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Take {
-            get {
-                return this.TakeField;
-            }
-            set {
-                if ((this.TakeField.Equals(value) != true)) {
-                    this.TakeField = value;
-                    this.RaisePropertyChanged("Take");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OrangeAdminService.IOrangeAdmin")]
     public interface IOrangeAdmin {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrangeAdmin/GetClients", ReplyAction="http://tempuri.org/IOrangeAdmin/GetClientsResponse")]
-        DS.OrangeAdmin.Core.DTO.ClientDTO[] GetClients(DS.OrangeAdmin.DataProvider.OrangeAdminService.QueryParameters queryParameters);
+        DS.OrangeAdmin.Core.Operations.OperationResult<System.Collections.Generic.List<DS.OrangeAdmin.Core.DTO.ClientDTO>> GetClients(DS.OrangeAdmin.Server.Queries.QueryParameters queryParameters);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrangeAdmin/GetClients", ReplyAction="http://tempuri.org/IOrangeAdmin/GetClientsResponse")]
-        System.Threading.Tasks.Task<DS.OrangeAdmin.Core.DTO.ClientDTO[]> GetClientsAsync(DS.OrangeAdmin.DataProvider.OrangeAdminService.QueryParameters queryParameters);
+        System.Threading.Tasks.Task<DS.OrangeAdmin.Core.Operations.OperationResult<System.Collections.Generic.List<DS.OrangeAdmin.Core.DTO.ClientDTO>>> GetClientsAsync(DS.OrangeAdmin.Server.Queries.QueryParameters queryParameters);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrangeAdmin/SaveClient", ReplyAction="http://tempuri.org/IOrangeAdmin/SaveClientResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DS.OrangeAdmin.Core.Operations.OperationResult<System.Collections.Generic.List<DS.OrangeAdmin.Core.DTO.ClientDTO>>))]
+        DS.OrangeAdmin.Core.Operations.OperationResult SaveClient(DS.OrangeAdmin.Core.DTO.ClientDTO client);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrangeAdmin/SaveClient", ReplyAction="http://tempuri.org/IOrangeAdmin/SaveClientResponse")]
+        System.Threading.Tasks.Task<DS.OrangeAdmin.Core.Operations.OperationResult> SaveClientAsync(DS.OrangeAdmin.Core.DTO.ClientDTO client);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -112,12 +56,20 @@ namespace DS.OrangeAdmin.DataProvider.OrangeAdminService {
                 base(binding, remoteAddress) {
         }
         
-        public DS.OrangeAdmin.Core.DTO.ClientDTO[] GetClients(DS.OrangeAdmin.DataProvider.OrangeAdminService.QueryParameters queryParameters) {
+        public DS.OrangeAdmin.Core.Operations.OperationResult<System.Collections.Generic.List<DS.OrangeAdmin.Core.DTO.ClientDTO>> GetClients(DS.OrangeAdmin.Server.Queries.QueryParameters queryParameters) {
             return base.Channel.GetClients(queryParameters);
         }
         
-        public System.Threading.Tasks.Task<DS.OrangeAdmin.Core.DTO.ClientDTO[]> GetClientsAsync(DS.OrangeAdmin.DataProvider.OrangeAdminService.QueryParameters queryParameters) {
+        public System.Threading.Tasks.Task<DS.OrangeAdmin.Core.Operations.OperationResult<System.Collections.Generic.List<DS.OrangeAdmin.Core.DTO.ClientDTO>>> GetClientsAsync(DS.OrangeAdmin.Server.Queries.QueryParameters queryParameters) {
             return base.Channel.GetClientsAsync(queryParameters);
+        }
+        
+        public DS.OrangeAdmin.Core.Operations.OperationResult SaveClient(DS.OrangeAdmin.Core.DTO.ClientDTO client) {
+            return base.Channel.SaveClient(client);
+        }
+        
+        public System.Threading.Tasks.Task<DS.OrangeAdmin.Core.Operations.OperationResult> SaveClientAsync(DS.OrangeAdmin.Core.DTO.ClientDTO client) {
+            return base.Channel.SaveClientAsync(client);
         }
     }
 }

@@ -9,6 +9,8 @@ using DS.OrangeAdmin.Core.Mappings;
 using System.Collections.Generic;
 using DS.OrangeAdmin.Shared.Entities;
 using DS.OrangeAdmin.Core.Queries;
+using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace DS.OrangeAdmin.Core.BLL
 {
@@ -19,7 +21,7 @@ namespace DS.OrangeAdmin.Core.BLL
 
         }
 
-        public OperationResult<IList<ClientDTO>> GetClients(QueryParameters<IClient> parameter)
+        public async Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters<IClient> parameter)
         {
             var context = new OrangeContext();
 
@@ -32,20 +34,20 @@ namespace DS.OrangeAdmin.Core.BLL
 
             try
             {
-                return new OperationResult<IList<ClientDTO>>(query.ToList().Select(client => EntityToDTO.Map(client)).ToList());
+                return new OperationResult<List<ClientDTO>>((await query.ToListAsync()).Select(client => EntityToDTO.Map(client)).ToList());
             }
             catch (Exception ex)
             {
-                return new OperationResult<IList<ClientDTO>>(false, ex.ToString());
+                return new OperationResult<List<ClientDTO>>(false, ex.ToString());
             }
         }
 
-        public OperationResult SaveOrUpdate(ClientDTO client)
+        public async Task<OperationResult> SaveOrUpdate(ClientDTO client)
         {
-            return this.safeOperation<ClientDTO>(saveOrUpdate, client);
+            return await this.safeOperation<ClientDTO>(saveOrUpdate, client);
         }
 
-        private OperationResult saveOrUpdate(ClientDTO client)
+        private async Task<OperationResult> saveOrUpdate(ClientDTO client)
         {
             var context = new OrangeContext();
 
@@ -72,7 +74,7 @@ namespace DS.OrangeAdmin.Core.BLL
                 context.Entry(clientToSave).State = System.Data.Entity.EntityState.Modified;
             }
 
-            context.SaveChanges();
+            await context.SaveChangesAsync();
 
             return new OperationResult();
         }
