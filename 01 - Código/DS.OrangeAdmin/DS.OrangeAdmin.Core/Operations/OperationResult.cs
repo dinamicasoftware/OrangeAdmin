@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DS.OrangeAdmin.Core.Operations
 {
+    [DataContract]
     public class OperationResult
     {
         public OperationResult()
@@ -19,10 +21,13 @@ namespace DS.OrangeAdmin.Core.Operations
             this.Messages = messages;
         }
 
+        [DataMember]
         public bool Successful { get; set; }
+        [DataMember]
         public IEnumerable<string> Messages { get; set; }
     }
 
+    [DataContract]
     public class OperationResult<T> : OperationResult
     {
         public OperationResult(T result)
@@ -36,6 +41,7 @@ namespace DS.OrangeAdmin.Core.Operations
 
         }
 
+        [DataMember]
         public T Result { get; set; }
     }
 }

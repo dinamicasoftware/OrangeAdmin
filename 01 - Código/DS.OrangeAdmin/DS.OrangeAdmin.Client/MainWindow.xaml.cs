@@ -32,23 +32,24 @@ namespace DS.OrangeAdmin.Client
         {
             InitializeComponent();
 
-            //IDataProvider dataProvider = new LocalDataProvider();
-            //QueryParameters<IClient> queryParameters = new QueryParameters<IClient>();
-            //var nombre = "Leo!";
-            //ClientDTO clt = new ClientDTO();
-            //queryParameters.Filtros.Add(client => client.Name == "Leo!");
-            //queryParameters.Filtros.Add(client => client.Name.Length < 8);
-            //var clients = dataProvider.GetClients(queryParameters).Result; //.Where(cli => cli.Nombre.Length > 8);
-            ////queryParameters.Filtros.Add(client => client.Name == client.Alias);
-            //queryParameters.Filtros.Add(client => client.Name == nombre);
-            //queryParameters.Filtros.Add(client => client.Id == clients.FirstOrDefault().Id);
-            //var clients2 = dataProvider.GetClients(queryParameters);
-            //var count = clients.Count();
-            //var newClient = new ClientDTO();
-            //newClient.Name = "Leo!";
-            ////dataProvider.SaveClient(newClient);
-            ////RibbonTextBox _ribbonTextBox = new RibbonTextBox() { Text = "RibbonTextBox" };
-            ////_ribbonBar2.Items.Add(_ribbonTextBox);
+            IDataProvider dataProvider = new LocalDataProvider();
+            QueryParameters<IClient> queryParameters = new QueryParameters<IClient>();
+            var nombre = "Leo!";
+            ClientDTO clt = new ClientDTO();
+            queryParameters.Filtros.Add(client => client.Name == "Leo!");
+            queryParameters.Filtros.Add(client => client.Name.Length < 8);
+            var clients = dataProvider.GetClients(queryParameters).Result.Result; //.Where(cli => cli.Nombre.Length > 8);
+            //queryParameters.Filtros.Add(client => client.Name == client.Alias);
+            queryParameters.Filtros.Add(client => client.Name == nombre);
+            queryParameters.Filtros.Add(client => client.Id == clients.FirstOrDefault().Id);
+            var clients2 = dataProvider.GetClients(queryParameters).Result.Result;
+            var count = clients.Count();
+            var newClient = new ClientDTO();
+            newClient.Name = "Leo!";
+            //dataProvider.SaveClient(newClient);
+            //RibbonTextBox _ribbonTextBox = new RibbonTextBox() { Text = "RibbonTextBox" };
+            //_ribbonBar2.Items.Add(_ribbonTextBox);
+
         }
 
         private void Salir_Click(object sender, RoutedEventArgs e)

@@ -9,7 +9,9 @@
     <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
@@ -28,6 +30,7 @@
     <MetadataFile FileName="OrangeAdminService3.xsd" MetadataType="Schema" ID="8633ca05-c338-4eb0-b00a-09624200d487" SourceId="1" SourceUrl="http://localhost:45985/OrangeAdminService.svc?xsd=xsd3" />
     <MetadataFile FileName="OrangeAdminService4.xsd" MetadataType="Schema" ID="c6b83ab4-6418-4e2f-9110-a3a6dc4d3f63" SourceId="1" SourceUrl="http://localhost:45985/OrangeAdminService.svc?xsd=xsd4" />
     <MetadataFile FileName="OrangeAdminService5.xsd" MetadataType="Schema" ID="fd904941-809b-4644-bb40-408cd4a0b6be" SourceId="1" SourceUrl="http://localhost:45985/OrangeAdminService.svc?xsd=xsd5" />
+    <MetadataFile FileName="OrangeAdminService6.xsd" MetadataType="Schema" ID="83d0121b-d1c3-4dab-925b-f2197939bd0e" SourceId="1" SourceUrl="http://localhost:45985/OrangeAdminService.svc?xsd=xsd6" />
     <MetadataFile FileName="OrangeAdminService.wsdl" MetadataType="Wsdl" ID="ab5b6468-f65b-48d0-8b1b-ceebc2b45b57" SourceId="1" SourceUrl="http://localhost:45985/OrangeAdminService.svc?wsdl" />
     <MetadataFile FileName="OrangeAdminService.disco" MetadataType="Disco" ID="df5a7b31-d6ef-49f7-9866-f1021abe501a" SourceId="1" SourceUrl="http://localhost:45985/OrangeAdminService.svc?disco" />
   </Metadata>

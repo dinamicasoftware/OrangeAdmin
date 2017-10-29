@@ -43,6 +43,7 @@ namespace DS.OrangeAdmin.Client.UI.Clients
             if (string.IsNullOrWhiteSpace(this.nameTextBlock.Text)) return;
             var parameters = new Core.Queries.QueryParameters<IClient>
             {
+
                 Filtros = new List<Expression<Func<IClient, bool>>>
                 {
                     client => client.Name.Trim().ToLower().Contains(this.nameTextBlock.Text.Trim().ToLower())
