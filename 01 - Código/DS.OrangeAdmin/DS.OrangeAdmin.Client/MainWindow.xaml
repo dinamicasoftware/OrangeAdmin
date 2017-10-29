@@ -4,35 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DS.OrangeAdmin.Client"
-        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
         Title="Orange Admin" Height="692.222" Width="1139.444"
         Background="#E6E6E6"
         WindowState="Maximized">
-    <StackPanel>
-        <syncfusion:MenuAdv VerticalAlignment="Top">
-            <syncfusion:MenuItemAdv Header="Productos" >
-                <syncfusion:MenuItemAdv Header="Business Intelligence" />
-                <syncfusion:MenuItemAdv Header="User Interface" >
-                    <syncfusion:MenuItemAdv Header="WPF">
-                        <syncfusion:MenuItemAdv Header="Tools"/>
-                        <syncfusion:MenuItemAdv Header="Chart"/>
-                        <syncfusion:MenuItemAdv Header="Grid"/>
-                        <syncfusion:MenuItemAdv Header="Diagram"/>
-                        <syncfusion:MenuItemAdv Header="Gauge"/>
-                        <syncfusion:MenuItemAdv Header="Schedule"/>
-                        <syncfusion:MenuItemAdv Header="Edit"/>
-                    </syncfusion:MenuItemAdv>
-                    <syncfusion:MenuItemAdv Header="Silverlight "/>
-                    <syncfusion:MenuItemAdv Header="Reporting" />
-                </syncfusion:MenuItemAdv>
-            </syncfusion:MenuItemAdv>
-            <syncfusion:MenuItemAdv Header="Clientes" >
-                <syncfusion:MenuItemAdv Header="A/B/M" Click="Clientes_Click"/>
-            </syncfusion:MenuItemAdv>
-        </syncfusion:MenuAdv>
-        <syncfusion:DockingManager Name="_mdiContainer" UseDocumentContainer="True" ContainerMode="TDI" VerticalAlignment="Center"  Height="800">
-
-        </syncfusion:DockingManager>
-    </StackPanel>
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Close"/>
+                    <MenuItem Header="_Save"/>
+                </MenuItem>
+                <MenuItem Header="_Clientes">
+                    <MenuItem Header="_Búsqueda" Click="Clientes_Click"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel></StackPanel>
+        </DockPanel>
+    </Grid>
 </Window>

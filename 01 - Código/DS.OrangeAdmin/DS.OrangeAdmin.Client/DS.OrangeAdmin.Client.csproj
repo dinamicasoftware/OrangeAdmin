@@ -104,12 +104,17 @@
     <Compile Include="UI\Clients\ClientsSearch.xaml.cs">
       <DependentUpon>ClientsSearch.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Clients\NewClient.xaml.cs">
+      <DependentUpon>NewClient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\Experimental\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Util\UIUtils.cs" />
     <Compile Include="VM\Clients\ClientsSearchResultVM.cs" />
     <Compile Include="VM\Clients\ClientsVM.cs" />
     <Compile Include="VM\Clients\ClientsVMHandler.cs" />
+    <Compile Include="VM\Clients\NewClientVM.cs" />
     <Compile Include="VM\ObservableObject.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +129,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UI\Clients\ClientsSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Clients\NewClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -376,6 +385,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="App.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\ic_add_box_48pt_3x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\ic_add_circle_48pt_3x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\ic_border_color_48pt_3x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\ic_find_in_page_48pt_3x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -18,6 +18,7 @@ using DS.OrangeAdmin.DataProvider;
 using DS.OrangeAdmin.Shared;
 using Syncfusion.Windows.Tools.Controls;
 using DS.OrangeAdmin.Client.UI.Clients;
+using DS.OrangeAdmin.Client.Util;
 using DS.OrangeAdmin.Shared.Entities;
 
 namespace DS.OrangeAdmin.Client
@@ -31,23 +32,23 @@ namespace DS.OrangeAdmin.Client
         {
             InitializeComponent();
 
-            IDataProvider dataProvider = new LocalDataProvider();
-            QueryParameters<IClient> queryParameters = new QueryParameters<IClient>();
-            var nombre = "Leo!";
-            ClientDTO clt = new ClientDTO();
-            queryParameters.Filtros.Add(client => client.Name == "Leo!");
-            queryParameters.Filtros.Add(client => client.Name.Length < 8);
-            var clients = dataProvider.GetClients(queryParameters).Result; //.Where(cli => cli.Nombre.Length > 8);
-            //queryParameters.Filtros.Add(client => client.Name == client.Alias);
-            queryParameters.Filtros.Add(client => client.Name == nombre);
-            queryParameters.Filtros.Add(client => client.Id == clients.FirstOrDefault().Id);
-            var clients2 = dataProvider.GetClients(queryParameters);
-            var count = clients.Count();
-            var newClient = new ClientDTO();
-            newClient.Name = "Leo!";
-            //dataProvider.SaveClient(newClient);
-            //RibbonTextBox _ribbonTextBox = new RibbonTextBox() { Text = "RibbonTextBox" };
-            //_ribbonBar2.Items.Add(_ribbonTextBox);
+            //IDataProvider dataProvider = new LocalDataProvider();
+            //QueryParameters<IClient> queryParameters = new QueryParameters<IClient>();
+            //var nombre = "Leo!";
+            //ClientDTO clt = new ClientDTO();
+            //queryParameters.Filtros.Add(client => client.Name == "Leo!");
+            //queryParameters.Filtros.Add(client => client.Name.Length < 8);
+            //var clients = dataProvider.GetClients(queryParameters).Result; //.Where(cli => cli.Nombre.Length > 8);
+            ////queryParameters.Filtros.Add(client => client.Name == client.Alias);
+            //queryParameters.Filtros.Add(client => client.Name == nombre);
+            //queryParameters.Filtros.Add(client => client.Id == clients.FirstOrDefault().Id);
+            //var clients2 = dataProvider.GetClients(queryParameters);
+            //var count = clients.Count();
+            //var newClient = new ClientDTO();
+            //newClient.Name = "Leo!";
+            ////dataProvider.SaveClient(newClient);
+            ////RibbonTextBox _ribbonTextBox = new RibbonTextBox() { Text = "RibbonTextBox" };
+            ////_ribbonBar2.Items.Add(_ribbonTextBox);
         }
 
         private void Salir_Click(object sender, RoutedEventArgs e)
@@ -57,22 +58,18 @@ namespace DS.OrangeAdmin.Client
 
         private void Clientes_Click(object sender, RoutedEventArgs e)
         {
-            var clientsABM = new ClientsSearch();
-            this._mdiContainer.Children.Add(clientsABM);
-            DockingManager.SetHeader(clientsABM, "A/B/M Clientes");
-            DockingManager.SetState(clientsABM, DockState.Document);
+            //var clientsABM = new ClientsSearch();
+            //this._mdiContainer.Children.Add(clientsABM);
+            //DockingManager.SetHeader(clientsABM, "A/B/M Clientes");
+            //DockingManager.SetState(clientsABM, DockState.Document);
 
-            //this.OpenNewModalWindow(new ClientsSearch());
+            ////this.OpenNewModalWindow(new ClientsSearch());
+            UIUtils.OpenNewModalWindow(new ClientsSearch());
         }
 
         private void Fight(object sender, RoutedEventArgs e)
         {
-            this.OpenNewModalWindow(new UI.Experimental.Window1());
-        }
-
-        private void OpenNewModalWindow(Window w)
-        {
-            w.ShowDialog();
+            UIUtils.OpenNewModalWindow(new UI.Experimental.Window1());
         }
     }
 }
