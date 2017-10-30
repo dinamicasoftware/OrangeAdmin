@@ -9,7 +9,7 @@
     <StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label Width="100">Código</Label>
-            <TextBox Name="CodeTextBlock" Margin="10,0,0,0" VerticalAlignment="Center" MinWidth="200" Width="223"></TextBox>
+            <TextBox Name="CodeTextBlock" Text="{Binding Code}" Margin="10,0,0,0" VerticalAlignment="Center" MinWidth="200" Width="223"></TextBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label Width="100">Nombre</Label>

@@ -33,8 +33,10 @@ namespace DS.OrangeAdmin.Client.UI.Clients
             // TODO: traer clientTypes, documentTypes e IVAs a través del nuevo servicio async
             vm = new NewClientVM
             {
-
+                Code = "test"
             };
+
+            this.DataContext = vm;
         }
 
         private void Cancel(object sender, RoutedEventArgs e)
