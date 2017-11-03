@@ -1,13 +1,17 @@
-﻿<Window x:Class="DS.OrangeAdmin.Client.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DS.OrangeAdmin.Client"
+        xmlns:Util="clr-namespace:DS.OrangeAdmin.Client.Util" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" x:Class="DS.OrangeAdmin.Client.MainWindow"
         mc:Ignorable="d"
         Title="Orange Admin" Height="692.222" Width="1139.444"
         Background="#E6E6E6"
         WindowState="Maximized">
+    <Window.DataContext>
+        <Util:Customer/>
+    </Window.DataContext>
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
@@ -20,7 +24,13 @@
                     <MenuItem Header="_Búsqueda" Click="Clientes_Click"/>
                 </MenuItem>
             </Menu>
-            <StackPanel></StackPanel>
+            <StackPanel>
+                <dxg:GridControl AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" ItemsSource="{Binding}">
+                    <dxg:GridControl.View>
+                        <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True"/>
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </StackPanel>
         </DockPanel>
     </Grid>
 </Window>

@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DS.OrangeAdmin.Client.Util;
+using DS.OrangeAdmin.Core.DTO;
 
 namespace DS.OrangeAdmin.Client.UI.Clients
 {
@@ -38,7 +39,7 @@ namespace DS.OrangeAdmin.Client.UI.Clients
             this.DataContext = vm;
         }
 
-        private void FindClients(object sender, RoutedEventArgs e)
+        private async void FindClients(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(this.nameTextBlock.Text)) return;
             var parameters = new Core.Queries.QueryParameters<IClient>
@@ -49,7 +50,9 @@ namespace DS.OrangeAdmin.Client.UI.Clients
                     client => client.Name.Trim().ToLower().Contains(this.nameTextBlock.Text.Trim().ToLower())
                 }
             };
-            var results = new ObservableCollection<ClientsVM>(ClientsVMHandler.GetClients(dataProvider.GetClients(parameters).Result));
+
+            
+            var results = new ObservableCollection<ClientsVM>(ClientsVMHandler.GetClients((await dataProvider.GetClients(parameters)).Result));
             (vm as ClientsSearchResultVM).Clients = results;
         }
 
@@ -69,11 +72,11 @@ namespace DS.OrangeAdmin.Client.UI.Clients
         }
 
         // Utils
-        private void CleanSearch()
+        private async void CleanSearch()
         {
             this.nameTextBlock.Text = "";
             var parameters = new Core.Queries.QueryParameters<IClient> { };
-            var results = new ObservableCollection<ClientsVM>(ClientsVMHandler.GetClients(dataProvider.GetClients(parameters).Result));
+            var results = new ObservableCollection<ClientsVM>(ClientsVMHandler.GetClients((await dataProvider.GetClients(parameters)).Result));
             (vm as ClientsSearchResultVM).Clients = results;
         }
     }
