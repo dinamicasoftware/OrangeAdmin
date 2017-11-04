@@ -22,62 +22,27 @@ using DS.OrangeAdmin.Core.DTO;
 
 namespace DS.OrangeAdmin.Client.UI.Clients
 {
-    /// <summary>
-    /// Lógica de interacción para ClientsSearch.xaml
-    /// </summary>
     public partial class ClientsSearch
     {
-        private IDataProvider dataProvider;
-        private ObservableObject vm;
+        protected readonly ClientsSearchResultVM _vm;
 
         public ClientsSearch()
         {
             InitializeComponent();
-            dataProvider = new LocalDataProvider();
-            vm = new ClientsSearchResultVM();
-            CleanSearch();
-            this.DataContext = vm;
+
+            _vm = new ClientsSearchResultVM();
+            DataContext = _vm;
         }
-
-        private async void FindClients(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(this.nameTextBlock.Text)) return;
-            var parameters = new Core.Queries.QueryParameters<IClient>
-            {
-
-                Filtros = new List<Expression<Func<IClient, bool>>>
-                {
-                    client => client.Name.Trim().ToLower().Contains(this.nameTextBlock.Text.Trim().ToLower())
-                }
-            };
-
-            
-            var results = new ObservableCollection<ClientsVM>(ClientsVMHandler.GetClients((await dataProvider.GetClients(parameters)).Result));
-            (vm as ClientsSearchResultVM).Clients = results;
-        }
-
+        
         private void NewClient(object sender, RoutedEventArgs e)
         {
             UIUtils.OpenNewModalWindow(new NewClient());
         }
 
-        private void RefreshClients(object sender, RoutedEventArgs e)
-        {
-            CleanSearch();
-        }
 
-        private void CleanClientsSearch(object sender, RoutedEventArgs e)
+        private void NuevoCliente_Click(object sender, RoutedEventArgs e)
         {
-            CleanSearch();
-        }
-
-        // Utils
-        private async void CleanSearch()
-        {
-            this.nameTextBlock.Text = "";
-            var parameters = new Core.Queries.QueryParameters<IClient> { };
-            var results = new ObservableCollection<ClientsVM>(ClientsVMHandler.GetClients((await dataProvider.GetClients(parameters)).Result));
-            (vm as ClientsSearchResultVM).Clients = results;
+            _vm.AddClient();
         }
     }
 }

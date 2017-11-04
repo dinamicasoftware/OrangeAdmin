@@ -27,12 +27,14 @@ namespace DS.OrangeAdmin.Client
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<Customer> Customers { get; set; }
+        //public List<Customer> Customers { get; set; }
+
+
         public MainWindow()
         {
             InitializeComponent();
 
-            this.Customers = Util.Customer.Customers();
+            //this.Customers = Util.Customer.Customers();
 
             //IDataProvider dataProvider = new LocalDataProvider();
             //QueryParameters<IClient> queryParameters = new QueryParameters<IClient>();

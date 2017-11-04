@@ -9,9 +9,6 @@
         Title="Orange Admin" Height="692.222" Width="1139.444"
         Background="#E6E6E6"
         WindowState="Maximized">
-    <Window.DataContext>
-        <Util:Customer/>
-    </Window.DataContext>
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
@@ -24,13 +21,9 @@
                     <MenuItem Header="_Búsqueda" Click="Clientes_Click"/>
                 </MenuItem>
             </Menu>
-            <StackPanel>
-                <dxg:GridControl AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True" ItemsSource="{Binding}">
-                    <dxg:GridControl.View>
-                        <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True"/>
-                    </dxg:GridControl.View>
-                </dxg:GridControl>
-            </StackPanel>
+            <Grid>
+                
+            </Grid>
         </DockPanel>
     </Grid>
 </Window>

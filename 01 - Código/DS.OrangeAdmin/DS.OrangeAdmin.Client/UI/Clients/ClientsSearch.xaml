@@ -3,32 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DS.OrangeAdmin.Client.UI.Clients" Width="738">
-    <StackPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_Clientes">
-                <MenuItem Header="_Buscar" Click="FindClients"/>
-                <MenuItem Header="_Actualizar" Click="RefreshClients"/>
-                <MenuItem Header="_Nuevo" Click="NewClient"/>
-            </MenuItem>
-        </Menu>
-        <!--<StackPanel Orientation="Horizontal">
-            <Button Height="50" Width="50">
-                <Image Source="/Icons/ic_add_circle_48pt_3x.png"></Image>
-            </Button>
-            <Button Height="50" Width="50">
-                <Image Source="/Icons/ic_border_color_48pt_3x.png"></Image>
-            </Button>
-            <Button Height="50" Width="50">
-                <Image Source="/Icons/ic_find_in_page_48pt_3x.png"></Image>
-            </Button>
-        </StackPanel>-->
-        <Grid>
-            <Label HorizontalAlignment="Left" Width="100">Nombre</Label>
-            <TextBox Name="nameTextBlock" Margin="105,0,184.333,0"/>
-            <Button HorizontalAlignment="Right" Margin="0,0,0.333,0" Width="87" Click="FindClients">Buscar</Button>
-            <Button HorizontalAlignment="Right" Margin="0,0,92.333,0" Width="87" Click="CleanClientsSearch">Limpiar</Button>
-        </Grid>
-        <DataGrid Name="grid1" Margin="0,0,0,0" ItemsSource="{Binding Clients}"/>
-    </StackPanel>
+        xmlns:local="clr-namespace:DS.OrangeAdmin.Client.UI.Clients"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:Util="clr-namespace:DS.OrangeAdmin.Client.Util"
+        Width="738">
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Close"/>
+                    <MenuItem Header="_Save"/>
+                </MenuItem>
+                <MenuItem Header="_Clientes">
+                    <MenuItem Header="_Nuevo" Click="NuevoCliente_Click"/>
+                </MenuItem>
+            </Menu>
+            <Grid>
+                <dxg:GridControl Name="gridControl1" AutoPopulateColumns="True" ItemsSource="{Binding Clients}">
+                    <dxg:GridControl.View>
+                        <dxg:TableView Name="tableView1" AutoWidth="True" />
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </Grid>
+        </DockPanel>
+    </Grid>
 </Window>

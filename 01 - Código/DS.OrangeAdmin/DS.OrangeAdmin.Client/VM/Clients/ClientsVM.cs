@@ -11,7 +11,7 @@ namespace DS.OrangeAdmin.Client.VM.Clients
         public ClientsVM() : base()
         {
         }
-
+        
         private string _nombre;
         public string Nombre
         {
