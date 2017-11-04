@@ -16,7 +16,6 @@ using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.Core.Queries;
 using DS.OrangeAdmin.DataProvider;
 using DS.OrangeAdmin.Shared;
-using Syncfusion.Windows.Tools.Controls;
 using DS.OrangeAdmin.Client.UI.Clients;
 using DS.OrangeAdmin.Client.Util;
 using DS.OrangeAdmin.Shared.Entities;
