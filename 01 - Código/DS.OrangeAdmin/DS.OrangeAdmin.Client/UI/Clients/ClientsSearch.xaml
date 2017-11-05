@@ -22,7 +22,7 @@
             <Grid>
                 <dxg:GridControl Name="gridControl1" AutoPopulateColumns="True" ItemsSource="{Binding Clients}">
                     <dxg:GridControl.View>
-                        <dxg:TableView Name="tableView1" AutoWidth="True" />
+                        <dxg:TableView x:Name="tableView1" AllowGrouping="False" AllowEditing="False"/>
                     </dxg:GridControl.View>
                 </dxg:GridControl>
             </Grid>

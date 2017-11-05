@@ -31,6 +31,7 @@ namespace DS.OrangeAdmin.Client.UI.Clients
             InitializeComponent();
 
             _vm = new ClientsSearchResultVM();
+
             DataContext = _vm;
         }
         

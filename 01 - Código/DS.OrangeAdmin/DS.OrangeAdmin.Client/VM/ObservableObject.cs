@@ -13,9 +13,7 @@ namespace DS.OrangeAdmin.Client.VM
 
         protected void RaisePropertyChangedEvent(string propertyName)
         {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
