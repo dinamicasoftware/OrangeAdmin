@@ -20,13 +20,9 @@ namespace DS.OrangeAdmin.DataProvider
             this.client = new OrangeAdminService.OrangeAdminClient();
         }
 
-        public async Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters<IClient> queryParameters)
+        public async Task<OperationResult<List<ClientDTO>>> GetClients(int skip = 0, int take = 0)
         {
-            return await this.client.GetClientsAsync(new Server.Queries.QueryParameters()
-            {
-                Filtros = queryParameters.Filtros.Select(filtro => JsonNetAdapter.Serialize(new FixVisitor().Visit(filtro))).ToArray(),
-                Take = queryParameters.Take
-            });
+            return null;// await this.client.GetClientsAsync(skip, take);
         }
 
         public async Task<OperationResult> SaveClient(ClientDTO client)

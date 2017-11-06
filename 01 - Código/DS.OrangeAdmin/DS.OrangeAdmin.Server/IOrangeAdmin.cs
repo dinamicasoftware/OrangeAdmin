@@ -13,7 +13,7 @@ namespace DS.OrangeAdmin.Server
     public interface IOrangeAdmin
     {
         [OperationContract]
-        Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters queryParameters);
+        Task<OperationResult<List<ClientDTO>>> GetClients(int skip = 0, int take = 0);
         [OperationContract]
         Task<OperationResult> SaveClient(ClientDTO client);
     }

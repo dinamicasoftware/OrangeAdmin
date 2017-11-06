@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.Data.Entities;
+using System.Linq;
 
 namespace DS.OrangeAdmin.Core.Mappings
 {
-    static class EntityToDTO
+    static class DTOToEntity
     {
-        public static ClientDTO Map(Client client)
+        public static Client Map(ClientDTO client)
         {
-            return  new ClientDTO()
+            return new Client()
             {
                 Alias = client.Alias,
                 ClientType = Map(client.ClientType),
@@ -28,9 +28,9 @@ namespace DS.OrangeAdmin.Core.Mappings
             };
         }
 
-        public static ClientTypeDTO Map(ClientType clientType)
+        public static ClientType Map(ClientTypeDTO clientType)
         {
-            return new ClientTypeDTO()
+            return new ClientType()
             {
                 CreatedAt = clientType.CreatedAt,
                 Deleted = clientType.Deleted,
@@ -40,9 +40,9 @@ namespace DS.OrangeAdmin.Core.Mappings
             };
         }
 
-        public static DocumentTypeDTO Map(DocumentType documentType)
+        public static DocumentType Map(DocumentTypeDTO documentType)
         {
-            return new DocumentTypeDTO()
+            return new DocumentType()
             {
                 CreatedAt = documentType.CreatedAt,
                 Deleted = documentType.Deleted,
@@ -52,9 +52,9 @@ namespace DS.OrangeAdmin.Core.Mappings
             };
         }
 
-        public static IList<EmailDTO> Map(IList<Email> emails)
+        public static IList<Email> Map(IList<EmailDTO> emails)
         {
-            return emails.Select(email => new EmailDTO()
+            return emails.Select(email => new Email()
             {
                 ContactType = Map(email.ContactType),
                 CreatedAt = email.CreatedAt,
@@ -66,9 +66,9 @@ namespace DS.OrangeAdmin.Core.Mappings
             }).ToList();
         }
 
-        public static ContactTypeDTO Map(ContactType contactType)
+        public static ContactType Map(ContactTypeDTO contactType)
         {
-            return new ContactTypeDTO()
+            return new ContactType()
             {
                 CreatedAt = contactType.CreatedAt,
                 Deleted = contactType.Deleted,
@@ -78,9 +78,9 @@ namespace DS.OrangeAdmin.Core.Mappings
             };
         }
 
-        public static IVATypeDTO Map(IVAType ivaType)
+        public static IVAType Map(IVATypeDTO ivaType)
         {
-            return new IVATypeDTO()
+            return new IVAType()
             {
                 CreatedAt = ivaType.CreatedAt,
                 Deleted = ivaType.Deleted,

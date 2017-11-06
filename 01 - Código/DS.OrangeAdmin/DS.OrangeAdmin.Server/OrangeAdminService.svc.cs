@@ -16,15 +16,9 @@ namespace DS.OrangeAdmin.Server
     // NOTE: In order to launch WCF Test Client for testing this service, please select OrangeAdminService.svc or OrangeAdminService.svc.cs at the Solution Explorer and start debugging.
     public class OrangeAdminService : IOrangeAdmin
     {
-        public async Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters queryParameters)
+        public async Task<OperationResult<List<ClientDTO>>> GetClients(int skip = 0, int take = 0)
         {
-            Core.Queries.QueryParameters<IClient> coreParameters = new Core.Queries.QueryParameters<IClient>()
-            {
-                Filtros = queryParameters.Filtros.Select(filtro => JsonNetAdapter.Deserialize<Expression<Func<IClient, bool>>>(filtro)).ToList(),
-                Take = queryParameters.Take
-            };
-
-            return await BusinessProvider.Clients.GetClients(coreParameters);
+            return await BusinessProvider.Clients.GetClients(skip, take);
         }
 
         public async Task<OperationResult> SaveClient(ClientDTO client)

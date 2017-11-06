@@ -7,7 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DevExpress.Xpf.CodeView;
+//using DevExpress.Xpf.CodeView;
 using DS.OrangeAdmin.Client.Util;
 using DS.OrangeAdmin.DataProvider;
 using DS.OrangeAdmin.Shared.Entities;
@@ -29,8 +29,11 @@ namespace DS.OrangeAdmin.Client.VM.Clients
         public async void Init()
         {
             var parameters = new Core.Queries.QueryParameters<IClient> { };
-            var results = new List<ClientsVM>(ClientsVMHandler.GetClients((await _dataProvider.GetClients(parameters)).Result));
-            this.Clients.AddRange(results);
+            var results = new List<ClientsVM>(ClientsVMHandler.GetClients((await _dataProvider.GetClients()).Result));
+            //this.Clients.AddRange(results);
+            foreach (var i in results) this.Clients.Add(i);
+            //OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+
         }
 
         public void AddClient()

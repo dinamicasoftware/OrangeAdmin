@@ -80,6 +80,7 @@
     <Compile Include="DTO\PhoneNumberDTO.cs" />
     <Compile Include="DTO\StateDTO.cs" />
     <Compile Include="DTO\ZoneDTO.cs" />
+    <Compile Include="Mappings\DTOToEntity.cs" />
     <Compile Include="Mappings\EntityToDTO.cs" />
     <Compile Include="Operations\Operation.cs" />
     <Compile Include="Operations\OperationResult.cs" />

@@ -13,13 +13,9 @@ namespace DS.OrangeAdmin.DataProvider
 {
     public class LocalDataProvider : IDataProvider
     {
-        public async Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters<IClient> queryParameters)
+        public async Task<OperationResult<List<ClientDTO>>> GetClients(int skip = 0, int take = 0)
         {
-            return await BusinessProvider.Clients.GetClients(new QueryParameters<IClient>()
-            {
-                Filtros = queryParameters.Filtros.Select(filtro => new FixVisitor().Visit(filtro)).ToArray(),
-                Take = queryParameters.Take
-            });
+            return await BusinessProvider.Clients.GetClients(skip, take);
         }
 
         public async Task<OperationResult> SaveClient(ClientDTO client)

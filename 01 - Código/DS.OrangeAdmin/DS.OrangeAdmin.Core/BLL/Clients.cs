@@ -7,8 +7,6 @@ using DS.OrangeAdmin.Core.Operations;
 using DS.OrangeAdmin.Core.Base;
 using DS.OrangeAdmin.Core.Mappings;
 using System.Collections.Generic;
-using DS.OrangeAdmin.Shared.Entities;
-using DS.OrangeAdmin.Core.Queries;
 using System.Threading.Tasks;
 using System.Data.Entity;
 
@@ -21,15 +19,20 @@ namespace DS.OrangeAdmin.Core.BLL
 
         }
 
-        public async Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters<IClient> parameter)
+        public async Task<OperationResult<List<ClientDTO>>> GetClients(int skip = 0, int take = 0)
         {
             var context = new OrangeContext();
 
-            var query = context.ClientsDao.AsQueryable<IClient>();
+            var query = context.ClientsDao.Where(client => !client.Deleted);
 
-            foreach (var filtro in parameter.Filtros)
+            if(skip > 0)
             {
-                query = query.Where(filtro);
+                query = query.Skip(skip);
+            }
+
+            if(take > 0)
+            {
+                query = query.Take(take);
             }
 
             try
@@ -51,27 +54,47 @@ namespace DS.OrangeAdmin.Core.BLL
         {
             var context = new OrangeContext();
 
+            DateTime now = DateTime.Now;
+            Client clientToSave = DTOToEntity.Map(client);
+            clientToSave.UpdatedAt = now;
+
             if (client.Id == Guid.Empty)
             {
-                Client clientToSave = new Client()
+                clientToSave.CreatedAt = now;
+
+                if (clientToSave.Emails != null)
                 {
-                    Code = client.Code,
-                    Name = client.Name,
-                    Alias = client.Alias,
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now
-                };
+                    foreach (var item in clientToSave.Emails)
+                    {
+                        item.UpdatedAt = now;
+                        if (item.Id == Guid.Empty)
+                        {
+                            item.CreatedAt = now;
+                        }
+                    }
+                }
 
                 context.ClientsDao.Add(clientToSave);
             }
             else
             {
-                Client clientToSave = context.ClientsDao.Find(client.Id);
-                clientToSave.Code = client.Code;
-                clientToSave.Name = client.Name;
-                clientToSave.Alias = client.Alias;
+                //Client clientToSave = context.ClientsDao.Find(client.Id);
+                if (clientToSave.Emails != null)
+                {
+                    if (clientToSave.Emails != null)
+                    {
+                        foreach (var item in clientToSave.Emails)
+                        {
+                            item.UpdatedAt = now;
+                            if (item.Id == Guid.Empty)
+                            {
+                                item.CreatedAt = now;
+                            }
+                        }
+                    }
+                }
 
-                context.Entry(clientToSave).State = System.Data.Entity.EntityState.Modified;
+                context.Entry(clientToSave).State = EntityState.Modified;
             }
 
             await context.SaveChangesAsync();
