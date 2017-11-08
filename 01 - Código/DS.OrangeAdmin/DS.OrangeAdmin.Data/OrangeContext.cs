@@ -11,6 +11,7 @@ namespace DS.OrangeAdmin.Data
         public OrangeContext() : base("OrangeDB")
         {
             Database.SetInitializer(new OrangeInitializer());
+            this.Configuration.LazyLoadingEnabled = false;
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

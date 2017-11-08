@@ -10,6 +10,9 @@ namespace DS.OrangeAdmin.Core.Mappings
     {
         public static Client Map(ClientDTO client)
         {
+            if (client == null)
+                return null;
+
             return new Client()
             {
                 Alias = client.Alias,
@@ -30,6 +33,9 @@ namespace DS.OrangeAdmin.Core.Mappings
 
         public static ClientType Map(ClientTypeDTO clientType)
         {
+            if (clientType == null)
+                return null;
+
             return new ClientType()
             {
                 CreatedAt = clientType.CreatedAt,
@@ -42,6 +48,9 @@ namespace DS.OrangeAdmin.Core.Mappings
 
         public static DocumentType Map(DocumentTypeDTO documentType)
         {
+            if (documentType == null)
+                return null;
+
             return new DocumentType()
             {
                 CreatedAt = documentType.CreatedAt,
@@ -54,6 +63,9 @@ namespace DS.OrangeAdmin.Core.Mappings
 
         public static IList<Email> Map(IList<EmailDTO> emails)
         {
+            if (emails == null)
+                return null;
+
             return emails.Select(email => new Email()
             {
                 ContactType = Map(email.ContactType),
@@ -68,6 +80,9 @@ namespace DS.OrangeAdmin.Core.Mappings
 
         public static ContactType Map(ContactTypeDTO contactType)
         {
+            if (contactType == null)
+                return null;
+
             return new ContactType()
             {
                 CreatedAt = contactType.CreatedAt,
@@ -80,6 +95,9 @@ namespace DS.OrangeAdmin.Core.Mappings
 
         public static IVAType Map(IVATypeDTO ivaType)
         {
+            if (ivaType == null)
+                return null;
+
             return new IVAType()
             {
                 CreatedAt = ivaType.CreatedAt,

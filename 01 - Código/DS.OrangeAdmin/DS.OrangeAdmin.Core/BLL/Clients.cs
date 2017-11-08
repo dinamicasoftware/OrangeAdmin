@@ -37,7 +37,7 @@ namespace DS.OrangeAdmin.Core.BLL
 
             try
             {
-                return new OperationResult<List<ClientDTO>>((await query.ToListAsync()).Select(client => EntityToDTO.Map(client)).ToList());
+                return new OperationResult<List<ClientDTO>>((await query.Include(cli => cli.Emails).ToListAsync()).Select(client => EntityToDTO.Map(client)).ToList());
             }
             catch (Exception ex)
             {

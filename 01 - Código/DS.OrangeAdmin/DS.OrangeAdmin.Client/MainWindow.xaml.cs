@@ -19,6 +19,8 @@ using DS.OrangeAdmin.Shared;
 using DS.OrangeAdmin.Client.UI.Clients;
 using DS.OrangeAdmin.Client.Util;
 using DS.OrangeAdmin.Shared.Entities;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace DS.OrangeAdmin.Client
 {
@@ -33,27 +35,53 @@ namespace DS.OrangeAdmin.Client
         public MainWindow()
         {
             InitializeComponent();
+            //data();
+        }
 
-            //this.Customers = Util.Customer.Customers();
+        private async void data()
+        {
+            IDataProvider dataProvider = new LocalDataProvider();
+            int contador = 0;
+            using (MySqlConnection cnn = new MySqlConnection("server=gestion.no-ip.info; database=sbs2; uid=root; pwd=automenu;"))
+            {
+                cnn.Open();
 
-            //IDataProvider dataProvider = new LocalDataProvider();
-            //QueryParameters<IClient> queryParameters = new QueryParameters<IClient>();
-            //var nombre = "Leo!";
-            //ClientDTO clt = new ClientDTO();
-            //queryParameters.Filtros.Add(client => client.Name == "Leo!");
-            //queryParameters.Filtros.Add(client => client.Name.Length < 8);
-            //var clients = dataProvider.GetClients(queryParameters).Result.Result; //.Where(cli => cli.Nombre.Length > 8);
-            ////queryParameters.Filtros.Add(client => client.Name == client.Alias);
-            //queryParameters.Filtros.Add(client => client.Name == nombre);
-            //queryParameters.Filtros.Add(client => client.Id == clients.FirstOrDefault().Id);
-            //var clients2 = dataProvider.GetClients(queryParameters).Result.Result;
-            //var count = clients.Count();
-            //var newClient = new ClientDTO();
-            //newClient.Name = "Leo!";
-            ////dataProvider.SaveClient(newClient);
-            ////RibbonTextBox _ribbonTextBox = new RibbonTextBox() { Text = "RibbonTextBox" };
-            ////_ribbonBar2.Items.Add(_ribbonTextBox);
+                using (MySqlCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM clt__clientes LIMIT 10000";
 
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            ClientDTO client = new ClientDTO();
+                            client.Alias = reader.IsDBNull(reader.GetOrdinal("cltnombrefantasia")) ? null : reader.GetString("cltnombrefantasia");
+                            client.Code = reader.IsDBNull(reader.GetOrdinal("cltcodigo")) ? null : reader.GetString("cltcodigo");
+                            client.DocumentNumber = reader.IsDBNull(reader.GetOrdinal("cltCuit")) ? null : reader.GetString("cltCuit");
+                            client.Name = reader.IsDBNull(reader.GetOrdinal("cltnombre")) ? null : reader.GetString("cltnombre");
+
+                            if (!reader.IsDBNull(reader.GetOrdinal("cltemail")))
+                            {
+                                client.Emails = new List<EmailDTO>();
+                                EmailDTO email = new EmailDTO();
+                                email.EmailAddress = reader.GetString("cltemail");
+                                client.Emails.Add(email);
+                            }
+
+                            try
+                            {
+                                await dataProvider.SaveClient(client);
+                            }
+                            catch (Exception ex)
+                            {
+                                contador++;
+                            }
+                        }
+                    }
+                }
+
+                cnn.Close();
+            }
         }
 
         private void Salir_Click(object sender, RoutedEventArgs e)

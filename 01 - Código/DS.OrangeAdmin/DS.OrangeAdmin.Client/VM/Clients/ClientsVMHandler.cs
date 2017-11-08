@@ -11,7 +11,15 @@ namespace DS.OrangeAdmin.Client.VM.Clients
     {
         public static IEnumerable<ClientsVM> GetClients(IList<ClientDTO> clientsQuery)
         {
-            return clientsQuery.Select(x => new ClientsVM { Nombre = x.Name });
+            return clientsQuery.Select(x => new ClientsVM
+            {
+                Nombre = x.Name,
+                Alias = x.Alias,
+                Código = x.Code,
+                NúmeroDeDocumento = x.DocumentNumber,
+                Observaciones = x.Observation,
+                DefaultEmail = x.Emails?.FirstOrDefault()?.EmailAddress
+            });
         }
     }
 }

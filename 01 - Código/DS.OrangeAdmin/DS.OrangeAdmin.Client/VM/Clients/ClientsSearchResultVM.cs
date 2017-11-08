@@ -29,7 +29,7 @@ namespace DS.OrangeAdmin.Client.VM.Clients
         public async void Init()
         {
             var parameters = new Core.Queries.QueryParameters<IClient> { };
-            var results = new List<ClientsVM>(ClientsVMHandler.GetClients((await _dataProvider.GetClients()).Result));
+            var results = new List<ClientsVM>(ClientsVMHandler.GetClients((await _dataProvider.GetClients(0,200)).Result));
             //this.Clients.AddRange(results);
             foreach (var i in results) this.Clients.Add(i);
             //OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));

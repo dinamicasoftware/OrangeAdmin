@@ -7,6 +7,11 @@ namespace DS.OrangeAdmin.Data.Entities
 {
     public class Client : BaseEntity
     {
+        public Client()
+        {
+            this.Emails = new HashSet<Email>();
+        }
+
         public string Code { get; set; }
         public string Name { get; set; }
         public string Alias { get; set; }
@@ -14,7 +19,7 @@ namespace DS.OrangeAdmin.Data.Entities
         public string DocumentNumber { get; set; }
         public IVAType IVA { get; set; }
         public ClientType ClientType { get; set; }
-        public IList<Email> Emails { get; set; }
+        public virtual ICollection<Email> Emails { get; set; }
         public string Observation { get; set; }
     }
 }

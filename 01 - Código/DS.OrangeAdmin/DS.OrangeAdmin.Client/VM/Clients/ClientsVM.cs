@@ -76,5 +76,15 @@ namespace DS.OrangeAdmin.Client.VM.Clients
             }
         }
 
+        private string _defaultEmail;
+        public string DefaultEmail
+        {
+            get { return _defaultEmail; }
+            set
+            {
+                _defaultEmail = value;
+                RaisePropertyChangedEvent(nameof(DefaultEmail));
+            }
+        }
     }
 }
