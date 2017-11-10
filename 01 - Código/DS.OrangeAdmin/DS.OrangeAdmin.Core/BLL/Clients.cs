@@ -9,6 +9,7 @@ using DS.OrangeAdmin.Core.Mappings;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using DS.OrangeAdmin.Core.InternalServices;
 
 namespace DS.OrangeAdmin.Core.BLL
 {
@@ -52,51 +53,18 @@ namespace DS.OrangeAdmin.Core.BLL
 
         private async Task<OperationResult> saveOrUpdate(ClientDTO client)
         {
-            var context = new OrangeContext();
-
-            DateTime now = DateTime.Now;
             Client clientToSave = DTOToEntity.Map(client);
-            clientToSave.UpdatedAt = now;
+            ClientsServices.PrepareToSave(clientToSave);
 
-            if (client.Id == Guid.Empty)
+            var context = new OrangeContext();
+            if (clientToSave.Id == Guid.Empty)
             {
-                clientToSave.CreatedAt = now;
-
-                if (clientToSave.Emails != null)
-                {
-                    foreach (var item in clientToSave.Emails)
-                    {
-                        item.UpdatedAt = now;
-                        if (item.Id == Guid.Empty)
-                        {
-                            item.CreatedAt = now;
-                        }
-                    }
-                }
-
                 context.ClientsDao.Add(clientToSave);
             }
             else
             {
-                //Client clientToSave = context.ClientsDao.Find(client.Id);
-                if (clientToSave.Emails != null)
-                {
-                    if (clientToSave.Emails != null)
-                    {
-                        foreach (var item in clientToSave.Emails)
-                        {
-                            item.UpdatedAt = now;
-                            if (item.Id == Guid.Empty)
-                            {
-                                item.CreatedAt = now;
-                            }
-                        }
-                    }
-                }
-
                 context.Entry(clientToSave).State = EntityState.Modified;
             }
-
             await context.SaveChangesAsync();
 
             return new OperationResult();

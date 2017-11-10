@@ -31,5 +31,6 @@ namespace DS.OrangeAdmin.Data
         public virtual DbSet<PhoneNumber> PhoneNumbersDao { get; set; }
         public virtual DbSet<State> StatesDao { get; set; }
         public virtual DbSet<Zone> ZonesDao { get; set; }
+        public virtual DbSet<Branch> BranchesDao { get; set; }
     }
 }

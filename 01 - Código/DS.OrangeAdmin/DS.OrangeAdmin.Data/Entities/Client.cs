@@ -10,6 +10,7 @@ namespace DS.OrangeAdmin.Data.Entities
         public Client()
         {
             this.Emails = new HashSet<Email>();
+            this.Branches = new HashSet<Branch>();
         }
 
         public string Code { get; set; }
@@ -19,6 +20,7 @@ namespace DS.OrangeAdmin.Data.Entities
         public string DocumentNumber { get; set; }
         public IVAType IVA { get; set; }
         public ClientType ClientType { get; set; }
+        public virtual ICollection<Branch> Branches { get; set; }
         public virtual ICollection<Email> Emails { get; set; }
         public string Observation { get; set; }
     }
