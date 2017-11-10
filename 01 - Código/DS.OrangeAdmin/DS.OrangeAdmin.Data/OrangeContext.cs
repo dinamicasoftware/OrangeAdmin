@@ -16,7 +16,6 @@ namespace DS.OrangeAdmin.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
             //modelBuilder.Entity<Client>().HasKey(u => u.Id).ToTable("Clientes");
             //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }

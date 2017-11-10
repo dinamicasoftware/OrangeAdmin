@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using DS.OrangeAdmin.Core.InternalServices;
+using System.Linq.Expressions;
 
 namespace DS.OrangeAdmin.Core.BLL
 {
@@ -18,6 +19,37 @@ namespace DS.OrangeAdmin.Core.BLL
         internal Clients()
         {
 
+        }
+
+        public async Task<OperationResult<ClientDTO>> GetClient(Guid id)
+        {
+            var context = new OrangeContext();
+
+            try
+            {
+                return new OperationResult<ClientDTO>(EntityToDTO.Map(await context.ClientsDao.Include(cli => cli.Emails).FirstAsync(cli => cli.Id == id)));
+            }
+            catch (Exception ex)
+            {
+                return new OperationResult<ClientDTO>(false, ex.ToString());
+            }
+        }
+
+        public async Task<OperationResult<List<ClientDTO>>> GetClients(Expression<Func<Client, bool>> filtro)
+        {
+            var context = new OrangeContext();
+
+            var query = context.ClientsDao.Where(client => !client.Deleted);
+            query = query.Where(filtro);
+
+            try
+            {
+                return new OperationResult<List<ClientDTO>>((await query.ToListAsync()).Select(client => EntityToDTO.Map(client)).ToList());
+            }
+            catch (Exception ex)
+            {
+                return new OperationResult<List<ClientDTO>>(false, ex.ToString());
+            }
         }
 
         public async Task<OperationResult<List<ClientDTO>>> GetClients(int skip = 0, int take = 0)
@@ -38,7 +70,7 @@ namespace DS.OrangeAdmin.Core.BLL
 
             try
             {
-                return new OperationResult<List<ClientDTO>>((await query.Include(cli => cli.Emails).ToListAsync()).Select(client => EntityToDTO.Map(client)).ToList());
+                return new OperationResult<List<ClientDTO>>((await query.ToListAsync()).Select(client => EntityToDTO.Map(client)).ToList());
             }
             catch (Exception ex)
             {
@@ -54,7 +86,7 @@ namespace DS.OrangeAdmin.Core.BLL
         private async Task<OperationResult> saveOrUpdate(ClientDTO client)
         {
             Client clientToSave = DTOToEntity.Map(client);
-            ClientsServices.PrepareToSave(clientToSave);
+            ClientsService.PrepareToSave(clientToSave);
 
             var context = new OrangeContext();
             if (clientToSave.Id == Guid.Empty)

@@ -8,6 +8,8 @@ using DS.OrangeAdmin.Shared.Serializer;
 using DS.OrangeAdmin.Shared.Expressions;
 using DS.OrangeAdmin.Shared.Entities;
 using System.Threading.Tasks;
+using DS.OrangeAdmin.Data.Entities;
+using System.Linq.Expressions;
 
 namespace DS.OrangeAdmin.DataProvider
 {
@@ -18,6 +20,16 @@ namespace DS.OrangeAdmin.DataProvider
         public ExternalDataProvider()
         {
             this.client = new OrangeAdminService.OrangeAdminClient();
+        }
+
+        public async Task<OperationResult<ClientDTO>> GetClient(Guid id)
+        {
+            return null;
+        }
+
+        public Task<OperationResult<List<ClientDTO>>> GetClients(Expression<Func<Client, bool>> filtro)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<OperationResult<List<ClientDTO>>> GetClients(int skip = 0, int take = 0)

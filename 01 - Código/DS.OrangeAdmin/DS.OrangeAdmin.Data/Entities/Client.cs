@@ -20,8 +20,8 @@ namespace DS.OrangeAdmin.Data.Entities
         public string DocumentNumber { get; set; }
         public IVAType IVA { get; set; }
         public ClientType ClientType { get; set; }
-        public virtual ICollection<Branch> Branches { get; set; }
-        public virtual ICollection<Email> Emails { get; set; }
+        public ICollection<Branch> Branches { get; set; }
+        public ICollection<Email> Emails { get; set; }
         public string Observation { get; set; }
     }
 }

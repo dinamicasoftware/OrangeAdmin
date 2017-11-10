@@ -7,7 +7,7 @@ using DS.OrangeAdmin.Data.Entities;
 
 namespace DS.OrangeAdmin.Core.InternalServices
 {
-    public static class MailsServices
+    public static class MailsService
     {
         public static void PrepareToSave(ICollection<Email> emails, DateTime now)
         {

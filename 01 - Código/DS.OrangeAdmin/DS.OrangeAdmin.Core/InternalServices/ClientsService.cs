@@ -7,7 +7,7 @@ using DS.OrangeAdmin.Data.Entities;
 
 namespace DS.OrangeAdmin.Core.InternalServices
 {
-    public static class ClientsServices
+    public static class ClientsService
     {
         public static void PrepareToSave(Client client)
         {
@@ -20,7 +20,8 @@ namespace DS.OrangeAdmin.Core.InternalServices
                 
             }
 
-            MailsServices.PrepareToSave(client.Emails, now);
+            MailsService.PrepareToSave(client.Emails, now);
+            BranchesService.PrepareToSave(client.Branches, now);
         }
     }
 }

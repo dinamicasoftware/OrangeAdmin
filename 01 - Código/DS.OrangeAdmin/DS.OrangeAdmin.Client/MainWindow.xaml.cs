@@ -21,6 +21,7 @@ using DS.OrangeAdmin.Client.Util;
 using DS.OrangeAdmin.Shared.Entities;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Linq.Expressions;
 
 namespace DS.OrangeAdmin.Client
 {
@@ -36,6 +37,14 @@ namespace DS.OrangeAdmin.Client
         {
             InitializeComponent();
             //data();
+            query();
+        }
+
+        private async void query()
+        {
+            IDataProvider dataProvider = new LocalDataProvider();
+            var mail = "gmail";
+            var v = await dataProvider.GetClients(cli => cli.Emails.Any(email => email.EmailAddress.Contains(mail)));
         }
 
         private async void data()
@@ -48,7 +57,7 @@ namespace DS.OrangeAdmin.Client
 
                 using (MySqlCommand cmd = cnn.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM clt__clientes LIMIT 10000";
+                    cmd.CommandText = "SELECT * FROM clt__clientes LIMIT 1000";
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -68,9 +77,21 @@ namespace DS.OrangeAdmin.Client
                                 client.Emails.Add(email);
                             }
 
+                            if (!reader.IsDBNull(reader.GetOrdinal("cltDireccion")))
+                            {
+                                client.Branches = new List<BranchDTO>();
+                                BranchDTO direccion = new BranchDTO();
+                                direccion.Address = reader.GetString("cltDireccion");
+                                client.Branches.Add(direccion);
+                            }
+
                             try
                             {
-                                await dataProvider.SaveClient(client);
+                                var resp = await dataProvider.SaveClient(client);
+                                if (!resp.Successful)
+                                {
+                                    var err = resp.Messages;
+                                }
                             }
                             catch (Exception ex)
                             {
