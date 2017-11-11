@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using DS.OrangeAdmin.Shared.Entities;
 
 namespace DS.OrangeAdmin.Core.Queries
 {
@@ -12,10 +8,15 @@ namespace DS.OrangeAdmin.Core.Queries
     {
         public QueryParameters()
         {
-            this.Filtros = new List<Expression<Func<T, bool>>>();
+            this.Where = new List<Expression<Func<T, bool>>>();
+            this.Includes = new List<Expression<Func<T, object>>>();
+            this.OrderBy = new List<Expression<Func<T, object>>>();
         }
 
-        public IList<Expression<Func<T, bool>>> Filtros { get; set; }
+        public IList<Expression<Func<T, bool>>> Where { get; set; }
+        public IList<Expression<Func<T, object>>> Includes { get; set; }
+        public IList<Expression<Func<T, object>>> OrderBy { get; set; }
         public int Take { get; set; }
+        public int Skip { get; set; }
     }
 }

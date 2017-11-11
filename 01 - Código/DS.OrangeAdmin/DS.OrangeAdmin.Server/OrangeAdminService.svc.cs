@@ -9,6 +9,7 @@ using DS.OrangeAdmin.Shared.Serializer;
 using System.Linq.Expressions;
 using DS.OrangeAdmin.Shared.Entities;
 using System.Threading.Tasks;
+using DS.OrangeAdmin.Data.Entities;
 
 namespace DS.OrangeAdmin.Server
 {
@@ -16,9 +17,14 @@ namespace DS.OrangeAdmin.Server
     // NOTE: In order to launch WCF Test Client for testing this service, please select OrangeAdminService.svc or OrangeAdminService.svc.cs at the Solution Explorer and start debugging.
     public class OrangeAdminService : IOrangeAdmin
     {
-        public async Task<OperationResult<List<ClientDTO>>> GetClients(int skip = 0, int take = 0)
+        public async Task<OperationResult<ClientDTO>> GetClient(Guid id)
         {
-            return await BusinessProvider.Clients.GetClients(skip, take);
+            return await BusinessProvider.Clients.GetClient(id);
+        }
+
+        public async Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters parameters)
+        {
+            return await BusinessProvider.Clients.GetClients(QueryParameters.Deserialize<Client>(parameters));
         }
 
         public async Task<OperationResult> SaveClient(ClientDTO client)

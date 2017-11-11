@@ -37,14 +37,16 @@ namespace DS.OrangeAdmin.Client
         {
             InitializeComponent();
             //data();
-            query();
+            //query();
         }
 
         private async void query()
         {
-            IDataProvider dataProvider = new LocalDataProvider();
+            IDataProvider dataProvider = new ExternalDataProvider();
             var mail = "gmail";
-            var v = await dataProvider.GetClients(cli => cli.Emails.Any(email => email.EmailAddress.Contains(mail)));
+            QueryParameters<DS.OrangeAdmin.Data.Entities.Client> parameters = new QueryParameters<Data.Entities.Client>();
+            parameters.Where.Add(cli => cli.Emails.Any(email => email.EmailAddress.Contains(mail)));
+            var v = await dataProvider.GetClients(parameters);
         }
 
         private async void data()

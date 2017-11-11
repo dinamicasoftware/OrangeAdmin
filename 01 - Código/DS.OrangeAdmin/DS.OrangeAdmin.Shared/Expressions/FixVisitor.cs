@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace DS.OrangeAdmin.Shared.Expressions
@@ -8,6 +9,42 @@ namespace DS.OrangeAdmin.Shared.Expressions
         public T Visit<T>(T expression) where T : Expression
         {
             return base.Visit(expression) as T;
+        }
+
+        protected override Expression VisitMethodCall(MethodCallExpression node)
+        {
+            return node.Update(node.Object, fixParameters(node.Arguments));;
+        }
+
+        private IEnumerable<Expression> fixParameters(ICollection<Expression> parameters)
+        {
+            if (parameters == null)
+            {
+                yield return null;
+            }
+            else
+            {
+                foreach (var parameter in parameters)
+                {
+                    if (parameter is MemberExpression)
+                    {
+                        if ((parameter as MemberExpression).Expression is ConstantExpression)
+                        {
+                            var item = Expression.Lambda<Func<object>>(parameter);
+                            var value = item.Compile()();
+                            yield return Expression.Constant(value);
+                        }
+                        else
+                        {
+                            yield return this.Visit(parameter);
+                        }
+                    }
+                    else
+                    {
+                        yield return this.Visit(parameter);
+                    }
+                }
+            }
         }
 
         protected override Expression VisitBinary(BinaryExpression node)

@@ -5,6 +5,8 @@ using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.Server.Queries;
 using DS.OrangeAdmin.Core.Operations;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
+using DS.OrangeAdmin.Data.Entities;
 
 namespace DS.OrangeAdmin.Server
 {
@@ -13,7 +15,9 @@ namespace DS.OrangeAdmin.Server
     public interface IOrangeAdmin
     {
         [OperationContract]
-        Task<OperationResult<List<ClientDTO>>> GetClients(int skip = 0, int take = 0);
+        Task<OperationResult<ClientDTO>> GetClient(Guid id);
+        [OperationContract]
+        Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters parameters);
         [OperationContract]
         Task<OperationResult> SaveClient(ClientDTO client);
     }

@@ -20,14 +20,9 @@ namespace DS.OrangeAdmin.DataProvider
             return await BusinessProvider.Clients.GetClient(id);
         }
 
-        public async Task<OperationResult<List<ClientDTO>>> GetClients(Expression<Func<Client, bool>> filtro)
+        public async Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters<Client> parameters)
         {
-            return await BusinessProvider.Clients.GetClients(filtro);
-        }
-
-        public async Task<OperationResult<List<ClientDTO>>> GetClients(int skip = 0, int take = 0)
-        {
-            return await BusinessProvider.Clients.GetClients(skip, take);
+            return await BusinessProvider.Clients.GetClients(parameters);
         }
 
         public async Task<OperationResult> SaveClient(ClientDTO client)

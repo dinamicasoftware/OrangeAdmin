@@ -1,11 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Server.Queries" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Server.Queries" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.Operations" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.Operations" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:45985/OrangeAdminService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.DTO" />
   <xs:import schemaLocation="http://localhost:45985/OrangeAdminService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:complexType name="QueryParameters">
+  <xs:complexType name="OperationResultOfClientDTOplZdA1DN">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="OperationResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.Operations" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ClientDTO" Namespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.DTO" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OperationResult">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.DTO" minOccurs="0" name="Result" nillable="true" type="q1:ClientDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OperationResultOfClientDTOplZdA1DN" nillable="true" type="tns:OperationResultOfClientDTOplZdA1DN" />
+  <xs:complexType name="OperationResult">
     <xs:sequence>
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Filtros" nillable="true" type="q1:ArrayOfstring" />
-      <xs:element minOccurs="0" name="Take" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Messages" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Successful" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="QueryParameters" nillable="true" type="tns:QueryParameters" />
+  <xs:element name="OperationResult" nillable="true" type="tns:OperationResult" />
+  <xs:complexType name="OperationResultOfArrayOfClientDTOplZdA1DN">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="OperationResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.Operations" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfClientDTO" Namespace="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.DTO" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OperationResult">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DS.OrangeAdmin.Core.DTO" minOccurs="0" name="Result" nillable="true" type="q3:ArrayOfClientDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OperationResultOfArrayOfClientDTOplZdA1DN" nillable="true" type="tns:OperationResultOfArrayOfClientDTOplZdA1DN" />
 </xs:schema>

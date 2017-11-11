@@ -1,9 +1,6 @@
-﻿using DS.OrangeAdmin.Data.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DS.OrangeAdmin.Data.Base;
 
 namespace DS.OrangeAdmin.Data.Entities
 {
