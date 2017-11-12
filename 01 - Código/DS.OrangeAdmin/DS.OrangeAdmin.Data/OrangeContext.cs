@@ -16,7 +16,6 @@ namespace DS.OrangeAdmin.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
             //modelBuilder.Entity<Client>().HasKey(u => u.Id).ToTable("Clientes");
             //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
@@ -31,5 +30,6 @@ namespace DS.OrangeAdmin.Data
         public virtual DbSet<PhoneNumber> PhoneNumbersDao { get; set; }
         public virtual DbSet<State> StatesDao { get; set; }
         public virtual DbSet<Zone> ZonesDao { get; set; }
+        public virtual DbSet<Branch> BranchesDao { get; set; }
     }
 }

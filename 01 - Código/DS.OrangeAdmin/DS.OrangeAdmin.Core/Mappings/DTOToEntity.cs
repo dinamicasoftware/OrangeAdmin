@@ -23,6 +23,7 @@ namespace DS.OrangeAdmin.Core.Mappings
                 DocumentNumber = client.DocumentNumber,
                 DocumentType = Map(client.DocumentType),
                 Emails = Map(client.Emails),
+                Branches = Map(client.Branches),
                 Id = client.Id,
                 IVA = Map(client.IVA),
                 Name = client.Name,
@@ -78,6 +79,44 @@ namespace DS.OrangeAdmin.Core.Mappings
             }).ToList();
         }
 
+        public static IList<PhoneNumber> Map(ICollection<PhoneNumberDTO> phones)
+        {
+            if (phones == null)
+                return null;
+
+            return phones.Select(phone => new PhoneNumber()
+            {
+                ContactType = Map(phone.ContactType),
+                CreatedAt = phone.CreatedAt,
+                Default = phone.Default,
+                Deleted = phone.Deleted,
+                Id = phone.Id,
+                Number = phone.Number,
+                UpdatedAt = phone.UpdatedAt
+            }).ToList();
+        }
+
+        public static IList<Branch> Map(IList<BranchDTO> branches)
+        {
+            if (branches == null)
+                return null;
+
+            return branches.Select(branch => new Branch()
+            {
+                Address = branch.Address,
+                City = branch.City,
+                Country = Map(branch.Country),
+                CreatedAt = branch.CreatedAt,
+                Deleted = branch.Deleted,
+                Id = branch.Id,
+                PhoneNumbers = Map(branch.PhoneNumbers),
+                State = Map(branch.State),
+                UpdatedAt = branch.UpdatedAt,
+                ZIP = branch.ZIP,
+                Zone = Map(branch.Zone)
+            }).ToList();
+        }
+
         public static ContactType Map(ContactTypeDTO contactType)
         {
             if (contactType == null)
@@ -105,6 +144,53 @@ namespace DS.OrangeAdmin.Core.Mappings
                 Description = ivaType.Description,
                 Id = ivaType.Id,
                 UpdatedAt = ivaType.UpdatedAt
+            };
+        }
+
+        public static Country Map(CountryDTO country)
+        {
+            if (country == null)
+                return null;
+
+            return new Country()
+            {
+                CreatedAt = country.CreatedAt,
+                Deleted = country.Deleted,
+                Id = country.Id,
+                Name = country.Name,
+                UpdatedAt = country.UpdatedAt
+            };
+        }
+
+        public static State Map(StateDTO state)
+        {
+            if (state == null)
+                return null;
+
+            return new State()
+            {
+                Country = Map(state.Country),
+                CreatedAt = state.CreatedAt,
+                Deleted = state.Deleted,
+                Id = state.Id,
+                Name = state.Name,
+                UpdatedAt = state.UpdatedAt
+            };
+        }
+
+        public static Zone Map(ZoneDTO zone)
+        {
+            if (zone == null)
+                return null;
+
+            return new Zone()
+            {
+                Country = Map(zone.Country),
+                CreatedAt = zone.CreatedAt,
+                Deleted = zone.Deleted,
+                Id = zone.Id,
+                Name = zone.Name,
+                UpdatedAt = zone.UpdatedAt
             };
         }
     }

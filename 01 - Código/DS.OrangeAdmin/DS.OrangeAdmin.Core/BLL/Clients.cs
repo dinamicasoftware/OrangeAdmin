@@ -9,6 +9,8 @@ using DS.OrangeAdmin.Core.Mappings;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using DS.OrangeAdmin.Core.InternalServices;
+using DS.OrangeAdmin.Core.Queries;
 
 namespace DS.OrangeAdmin.Core.BLL
 {
@@ -19,25 +21,63 @@ namespace DS.OrangeAdmin.Core.BLL
 
         }
 
-        public async Task<OperationResult<List<ClientDTO>>> GetClients(int skip = 0, int take = 0)
+        public async Task<OperationResult<ClientDTO>> GetClient(Guid id)
+        {
+            var context = new OrangeContext();
+
+            try
+            {
+                return new OperationResult<ClientDTO>(EntityToDTO.Map(await context.ClientsDao.Include(cli => cli.Emails).FirstAsync(cli => cli.Id == id)));
+            }
+            catch (Exception ex)
+            {
+                return new OperationResult<ClientDTO>(false, ex.ToString());
+            }
+        }
+
+        public async Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters<Client> parameters)
         {
             var context = new OrangeContext();
 
             var query = context.ClientsDao.Where(client => !client.Deleted);
 
-            if(skip > 0)
+            if (parameters?.Where != null)
             {
-                query = query.Skip(skip);
+                foreach (var filter in parameters.Where)
+                {
+                    query = query.Where(filter);
+                }
             }
 
-            if(take > 0)
+            if (parameters?.Skip > 0)
             {
-                query = query.Take(take);
+                query = query.Skip(parameters.Skip);
+            }
+
+            if (parameters.Take > 0)
+            {
+                query = query.Take(parameters.Take);
+            }
+
+            if (parameters?.Includes != null)
+            {
+                foreach (var include in parameters.Includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+
+            if (parameters?.OrderBy != null)
+            {
+                foreach (var order in parameters.OrderBy)
+                {
+                    query = query.OrderBy(order);
+                }
             }
 
             try
             {
-                return new OperationResult<List<ClientDTO>>((await query.Include(cli => cli.Emails).ToListAsync()).Select(client => EntityToDTO.Map(client)).ToList());
+                return new OperationResult<List<ClientDTO>>((await query.ToListAsync()).Select(client => EntityToDTO.Map(client)).ToList());
             }
             catch (Exception ex)
             {
@@ -52,51 +92,18 @@ namespace DS.OrangeAdmin.Core.BLL
 
         private async Task<OperationResult> saveOrUpdate(ClientDTO client)
         {
-            var context = new OrangeContext();
-
-            DateTime now = DateTime.Now;
             Client clientToSave = DTOToEntity.Map(client);
-            clientToSave.UpdatedAt = now;
+            ClientsService.PrepareToSave(clientToSave);
 
-            if (client.Id == Guid.Empty)
+            var context = new OrangeContext();
+            if (clientToSave.Id == Guid.Empty)
             {
-                clientToSave.CreatedAt = now;
-
-                if (clientToSave.Emails != null)
-                {
-                    foreach (var item in clientToSave.Emails)
-                    {
-                        item.UpdatedAt = now;
-                        if (item.Id == Guid.Empty)
-                        {
-                            item.CreatedAt = now;
-                        }
-                    }
-                }
-
                 context.ClientsDao.Add(clientToSave);
             }
             else
             {
-                //Client clientToSave = context.ClientsDao.Find(client.Id);
-                if (clientToSave.Emails != null)
-                {
-                    if (clientToSave.Emails != null)
-                    {
-                        foreach (var item in clientToSave.Emails)
-                        {
-                            item.UpdatedAt = now;
-                            if (item.Id == Guid.Empty)
-                            {
-                                item.CreatedAt = now;
-                            }
-                        }
-                    }
-                }
-
                 context.Entry(clientToSave).State = EntityState.Modified;
             }
-
             await context.SaveChangesAsync();
 
             return new OperationResult();

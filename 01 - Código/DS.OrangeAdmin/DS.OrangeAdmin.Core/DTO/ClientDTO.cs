@@ -28,6 +28,8 @@ namespace DS.OrangeAdmin.Core.DTO
         [DataMember]
         public IList<EmailDTO> Emails { get; set; }
         [DataMember]
+        public IList<BranchDTO> Branches { get; set; }
+        [DataMember]
         public string Observation { get; set; }
     }
 }

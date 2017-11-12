@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.Core.Operations;
 using DS.OrangeAdmin.Core.Queries;
-using DS.OrangeAdmin.Shared.Serializer;
-using DS.OrangeAdmin.Shared.Expressions;
-using DS.OrangeAdmin.Shared.Entities;
 using System.Threading.Tasks;
+using DS.OrangeAdmin.Data.Entities;
 
 namespace DS.OrangeAdmin.DataProvider
 {
@@ -20,9 +17,14 @@ namespace DS.OrangeAdmin.DataProvider
             this.client = new OrangeAdminService.OrangeAdminClient();
         }
 
-        public async Task<OperationResult<List<ClientDTO>>> GetClients(int skip = 0, int take = 0)
+        public async Task<OperationResult<ClientDTO>> GetClient(Guid id)
         {
-            return null;// await this.client.GetClientsAsync(skip, take);
+            return await this.client.GetClientAsync(id);
+        }
+
+        public async Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters<Client> parameters)
+        {
+            return await this.client.GetClientsAsync(DS.OrangeAdmin.Server.Queries.QueryParameters.Serialize(parameters));
         }
 
         public async Task<OperationResult> SaveClient(ClientDTO client)

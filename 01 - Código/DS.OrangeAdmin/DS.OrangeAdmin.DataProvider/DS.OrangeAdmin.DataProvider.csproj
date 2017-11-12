@@ -65,6 +65,10 @@
       <Project>{692ef50d-73ac-4f91-98da-af1ac85fe7f2}</Project>
       <Name>DS.OrangeAdmin.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DS.OrangeAdmin.Data\DS.OrangeAdmin.Data.csproj">
+      <Project>{2e175a38-dba2-409f-8950-15edcdad0acc}</Project>
+      <Name>DS.OrangeAdmin.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DS.OrangeAdmin.Server\DS.OrangeAdmin.Server.csproj">
       <Project>{c7d826b8-8efa-40d0-a285-367d47578b6f}</Project>
       <Name>DS.OrangeAdmin.Server</Name>

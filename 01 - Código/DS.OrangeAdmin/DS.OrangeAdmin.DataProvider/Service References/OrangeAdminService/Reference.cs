@@ -15,14 +15,21 @@ namespace DS.OrangeAdmin.DataProvider.OrangeAdminService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OrangeAdminService.IOrangeAdmin")]
     public interface IOrangeAdmin {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrangeAdmin/GetClients", ReplyAction="http://tempuri.org/IOrangeAdmin/GetClientsResponse")]
-        DS.OrangeAdmin.Core.Operations.OperationResult<System.Collections.Generic.List<DS.OrangeAdmin.Core.DTO.ClientDTO>> GetClients(DS.OrangeAdmin.Server.Queries.QueryParameters queryParameters);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrangeAdmin/GetClient", ReplyAction="http://tempuri.org/IOrangeAdmin/GetClientResponse")]
+        DS.OrangeAdmin.Core.Operations.OperationResult<DS.OrangeAdmin.Core.DTO.ClientDTO> GetClient(System.Guid id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrangeAdmin/GetClient", ReplyAction="http://tempuri.org/IOrangeAdmin/GetClientResponse")]
+        System.Threading.Tasks.Task<DS.OrangeAdmin.Core.Operations.OperationResult<DS.OrangeAdmin.Core.DTO.ClientDTO>> GetClientAsync(System.Guid id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrangeAdmin/GetClients", ReplyAction="http://tempuri.org/IOrangeAdmin/GetClientsResponse")]
-        System.Threading.Tasks.Task<DS.OrangeAdmin.Core.Operations.OperationResult<System.Collections.Generic.List<DS.OrangeAdmin.Core.DTO.ClientDTO>>> GetClientsAsync(DS.OrangeAdmin.Server.Queries.QueryParameters queryParameters);
+        DS.OrangeAdmin.Core.Operations.OperationResult<System.Collections.Generic.List<DS.OrangeAdmin.Core.DTO.ClientDTO>> GetClients(DS.OrangeAdmin.Server.Queries.QueryParameters parameters);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrangeAdmin/GetClients", ReplyAction="http://tempuri.org/IOrangeAdmin/GetClientsResponse")]
+        System.Threading.Tasks.Task<DS.OrangeAdmin.Core.Operations.OperationResult<System.Collections.Generic.List<DS.OrangeAdmin.Core.DTO.ClientDTO>>> GetClientsAsync(DS.OrangeAdmin.Server.Queries.QueryParameters parameters);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrangeAdmin/SaveClient", ReplyAction="http://tempuri.org/IOrangeAdmin/SaveClientResponse")]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DS.OrangeAdmin.Core.Operations.OperationResult<System.Collections.Generic.List<DS.OrangeAdmin.Core.DTO.ClientDTO>>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(DS.OrangeAdmin.Core.Operations.OperationResult<DS.OrangeAdmin.Core.DTO.ClientDTO>))]
         DS.OrangeAdmin.Core.Operations.OperationResult SaveClient(DS.OrangeAdmin.Core.DTO.ClientDTO client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrangeAdmin/SaveClient", ReplyAction="http://tempuri.org/IOrangeAdmin/SaveClientResponse")]
@@ -56,12 +63,20 @@ namespace DS.OrangeAdmin.DataProvider.OrangeAdminService {
                 base(binding, remoteAddress) {
         }
         
-        public DS.OrangeAdmin.Core.Operations.OperationResult<System.Collections.Generic.List<DS.OrangeAdmin.Core.DTO.ClientDTO>> GetClients(DS.OrangeAdmin.Server.Queries.QueryParameters queryParameters) {
-            return base.Channel.GetClients(queryParameters);
+        public DS.OrangeAdmin.Core.Operations.OperationResult<DS.OrangeAdmin.Core.DTO.ClientDTO> GetClient(System.Guid id) {
+            return base.Channel.GetClient(id);
         }
         
-        public System.Threading.Tasks.Task<DS.OrangeAdmin.Core.Operations.OperationResult<System.Collections.Generic.List<DS.OrangeAdmin.Core.DTO.ClientDTO>>> GetClientsAsync(DS.OrangeAdmin.Server.Queries.QueryParameters queryParameters) {
-            return base.Channel.GetClientsAsync(queryParameters);
+        public System.Threading.Tasks.Task<DS.OrangeAdmin.Core.Operations.OperationResult<DS.OrangeAdmin.Core.DTO.ClientDTO>> GetClientAsync(System.Guid id) {
+            return base.Channel.GetClientAsync(id);
+        }
+        
+        public DS.OrangeAdmin.Core.Operations.OperationResult<System.Collections.Generic.List<DS.OrangeAdmin.Core.DTO.ClientDTO>> GetClients(DS.OrangeAdmin.Server.Queries.QueryParameters parameters) {
+            return base.Channel.GetClients(parameters);
+        }
+        
+        public System.Threading.Tasks.Task<DS.OrangeAdmin.Core.Operations.OperationResult<System.Collections.Generic.List<DS.OrangeAdmin.Core.DTO.ClientDTO>>> GetClientsAsync(DS.OrangeAdmin.Server.Queries.QueryParameters parameters) {
+            return base.Channel.GetClientsAsync(parameters);
         }
         
         public DS.OrangeAdmin.Core.Operations.OperationResult SaveClient(DS.OrangeAdmin.Core.DTO.ClientDTO client) {
