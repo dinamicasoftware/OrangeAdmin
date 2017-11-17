@@ -23,6 +23,7 @@
                                ApplicationButtonText="File" 
                                PageCategoryAlignment="Right"
                                RibbonStyle="Office2010" 
+                           
                                >
             <!--region #AppMenu-->
             <dxr:RibbonControl.ApplicationMenu>

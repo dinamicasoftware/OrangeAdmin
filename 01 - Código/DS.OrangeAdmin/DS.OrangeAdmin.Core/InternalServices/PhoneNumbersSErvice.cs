@@ -1,9 +1,8 @@
-﻿using DS.OrangeAdmin.Data.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DS.OrangeAdmin.Core.Operations;
+using DS.OrangeAdmin.Data.Entities;
 
 namespace DS.OrangeAdmin.Core.InternalServices
 {
@@ -22,6 +21,22 @@ namespace DS.OrangeAdmin.Core.InternalServices
                     }
                 }
             }
+        }
+
+        public static OperationResult Validate(ICollection<PhoneNumber> phones)
+        {
+            if (phones != null)
+            {
+                foreach (var phone in phones)
+                {
+                    if (string.IsNullOrEmpty(phone?.Number))
+                    {
+                        return new OperationResult(false, "El número de teléfono no puede ser vacío");
+                    }
+                }
+            }
+
+            return new OperationResult();
         }
     }
 }

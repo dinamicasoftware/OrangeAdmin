@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DS.OrangeAdmin.Data.Entities;
+using DS.OrangeAdmin.Core.Operations;
 
 namespace DS.OrangeAdmin.Core.InternalServices
 {
@@ -23,6 +24,22 @@ namespace DS.OrangeAdmin.Core.InternalServices
                     PhoneNumbersService.PrepareToSave(item.PhoneNumbers, now);
                 }
             }
+        }
+
+        public static OperationResult Validate(ICollection<Branch> branches)
+        {
+            if (branches != null)
+            {
+                foreach (var branch in branches)
+                {
+                    if (string.IsNullOrEmpty(branch?.Address))
+                    {
+                        return new OperationResult(false, "La dirección de la sucursal no puede ser vacía");
+                    }
+                }
+            }
+
+            return new OperationResult();
         }
     }
 }

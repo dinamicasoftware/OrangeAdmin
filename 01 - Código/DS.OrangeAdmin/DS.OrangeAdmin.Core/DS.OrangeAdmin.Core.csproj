@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Base\BaseBll.cs" />
     <Compile Include="Base\BaseDTO.cs" />
+    <Compile Include="Base\BaseService.cs" />
     <Compile Include="BLL\Clients.cs" />
     <Compile Include="BusinessProvider.cs" />
     <Compile Include="DTO\BranchDTO.cs" />

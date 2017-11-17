@@ -87,7 +87,7 @@ namespace DS.OrangeAdmin.Core.BLL
 
         public async Task<OperationResult> SaveOrUpdate(ClientDTO client)
         {
-            return await this.safeOperation<ClientDTO>(saveOrUpdate, client);
+            return await this.safeDBOperation<ClientDTO>(saveOrUpdate, client);
         }
 
         private async Task<OperationResult> saveOrUpdate(ClientDTO client)
@@ -95,18 +95,26 @@ namespace DS.OrangeAdmin.Core.BLL
             Client clientToSave = DTOToEntity.Map(client);
             ClientsService.PrepareToSave(clientToSave);
 
-            var context = new OrangeContext();
-            if (clientToSave.Id == Guid.Empty)
+            var validateClient = ClientsService.Validate(clientToSave);
+            if (validateClient.Successful)
             {
-                context.ClientsDao.Add(clientToSave);
+                var context = new OrangeContext();
+                if (clientToSave.Id == Guid.Empty)
+                {
+                    context.ClientsDao.Add(clientToSave);
+                }
+                else
+                {
+                    context.Entry(clientToSave).State = EntityState.Modified;
+                }
+                await context.SaveChangesAsync();
+
+                return new OperationResult();
             }
             else
             {
-                context.Entry(clientToSave).State = EntityState.Modified;
+                return validateClient;
             }
-            await context.SaveChangesAsync();
-
-            return new OperationResult();
         }
     }
 }

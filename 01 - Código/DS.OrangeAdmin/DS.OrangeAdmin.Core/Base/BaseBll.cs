@@ -7,7 +7,7 @@ namespace DS.OrangeAdmin.Core.Base
 {
     public abstract class BaseBll
     {
-        protected async Task<OperationResult> safeOperation<T>(Operation<T> operation, T param)
+        protected async Task<OperationResult> safeDBOperation<T>(DBOperation<T> operation, T param)
         {
             OperationResult operationResult;
             bool retryOperation;

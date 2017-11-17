@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DS.OrangeAdmin.Data.Entities;
+using DS.OrangeAdmin.Core.Operations;
 
 namespace DS.OrangeAdmin.Core.InternalServices
 {
@@ -22,6 +21,22 @@ namespace DS.OrangeAdmin.Core.InternalServices
                     }
                 }
             }
+        }
+
+        public static OperationResult Validate(ICollection<Email> emails)
+        {
+            if (emails != null)
+            {
+                foreach (var email in emails)
+                {
+                    if (string.IsNullOrEmpty(email?.EmailAddress))
+                    {
+                        return new OperationResult(false, "La dirección de email no puede ser vacía");
+                    }
+                }
+            }
+
+            return new OperationResult();
         }
     }
 }
