@@ -107,6 +107,13 @@
     <Compile Include="UI\Clients\NewClient.xaml.cs">
       <DependentUpon>NewClient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserControls\OrangeRibbonCustomControl.cs" />
+    <Compile Include="UI\UserControls\OrangeRibbonControl.xaml.cs">
+      <DependentUpon>OrangeRibbonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserControls\OrangeStatusBar.xaml.cs">
+      <DependentUpon>OrangeStatusBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Util\DataTableUtil.cs" />
     <Compile Include="Util\UIUtils.cs" />
     <Compile Include="VM\Clients\ClientsSearchResultVM.cs" />
@@ -127,6 +134,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UI\Clients\NewClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UserControls\OrangeRibbonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UserControls\OrangeStatusBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
