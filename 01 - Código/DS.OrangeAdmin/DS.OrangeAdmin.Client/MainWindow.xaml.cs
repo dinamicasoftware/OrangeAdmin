@@ -17,6 +17,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Threading;
 using DevExpress.Xpf.Ribbon;
+using DS.OrangeAdmin.Client.UI.Clients;
 
 namespace RibbonControl_Ex
 {
@@ -29,5 +30,9 @@ namespace RibbonControl_Ex
             
         }
 
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            new SearchClients().ShowDialog();
+        }
     }
 }

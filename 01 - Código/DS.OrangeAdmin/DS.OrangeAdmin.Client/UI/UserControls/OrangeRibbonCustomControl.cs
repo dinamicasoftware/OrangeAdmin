@@ -23,7 +23,6 @@ namespace DS.OrangeAdmin.Client.UI.UserControls
             //_ctrl = new RibbonControl();
             //_ctrl.Controls.Add(_ctrl);
             
-
         }
     }
 }

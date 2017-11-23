@@ -20,7 +20,7 @@
 
         <userControls:OrangeRibbonControl Grid.Row="0"></userControls:OrangeRibbonControl>
         
-        <Button Grid.Row="1">CLICK ME!</Button>
+        <Button Grid.Row="1" Click="ButtonBase_OnClick">CLICK ME!</Button>
         
         <userControls:OrangeStatusBar Grid.Row="2"></userControls:OrangeStatusBar>
         

@@ -1,0 +1,91 @@
+﻿<dxr:DXRibbonWindow
+        x:Class="DS.OrangeAdmin.Client.UI.Clients.SearchClients"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DS.OrangeAdmin.Client.UI.Clients"
+        xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+        mc:Ignorable="d"
+        Title="Clientes" Height="600" Width="800"
+                    
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:userControls="clr-namespace:DS.OrangeAdmin.Client.UI.UserControls"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        Icon="{dxc:DXImage Image=Home_16x16.png}"
+        dxc:ThemeManager.ThemeName="Office2016White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <dxr:RibbonControl x:Name="RibbonControl" Grid.Row="0" 
+                               ApplicationButtonSmallIcon="{dxc:DXImage Image=Home_16x16.png}" 
+                               ApplicationButtonLargeIcon="{dxc:DXImage Image=Home_32x32.png}" 
+                               ApplicationButtonText="Clientes" 
+                               PageCategoryAlignment="Right"
+                               RibbonStyle="Office2010">
+            
+            <!--region #AppMenu (el menú contextual desplegable) -->
+            <dxr:RibbonControl.ApplicationMenu>
+                <dxr:ApplicationMenu ShowRightPane="False">
+                    <dxr:ApplicationMenu.ItemLinks>
+                        <dxb:BarButtonItemLink BarItemName="bNew"/>
+                    </dxr:ApplicationMenu.ItemLinks>
+                    <dxr:ApplicationMenu.BottomPane>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Click="ExitButton_Click" Content="Exit" Width="100" />
+                        </StackPanel>
+                    </dxr:ApplicationMenu.BottomPane>
+                </dxr:ApplicationMenu>
+            </dxr:RibbonControl.ApplicationMenu>
+            <!--endregion #AppMenu-->
+
+            <!--region #PageHeaderItemLinks-->
+            <dxr:RibbonControl.PageHeaderItems>
+                <dxb:BarButtonItem Name="bAbout" Content="About" 
+                               Glyph="{dxc:DXImage Image=Info_16x16.png}" 
+                               LargeGlyph="{dxc:DXImage Image=Info_32x32.png}" 
+                               ItemClick="bAbout_ItemClick" />
+            </dxr:RibbonControl.PageHeaderItems>
+            <!--endregion #PageHeaderItemLinks-->
+
+            <!--region #DefaultPageCategory-->
+            <dxr:RibbonDefaultPageCategory>
+                <dxr:RibbonPage Caption="Home">
+                    <dxr:RibbonPageGroup Name="pgFile" Caption="Acciones" 
+                                         ShowCaptionButton="True"
+                                         CaptionButtonClick="groupFile_CaptionButtonClick"
+                                         >
+                        <dxb:BarButtonItem Name="bNew"
+                               Content="Crear" 
+                               Glyph="{dxc:DXImage Image=New_16x16.png}" 
+                               LargeGlyph="{dxc:DXImage Image=New_32x32.png}"  
+                               Description="Crear un nuevo cliente"
+                               Hint="Crear un nuevo cliente."
+                               RibbonStyle="Large"/>
+
+                    </dxr:RibbonPageGroup>
+                </dxr:RibbonPage>
+            </dxr:RibbonDefaultPageCategory>
+            <!--endregion #DefaultPageCategory-->
+
+        </dxr:RibbonControl>
+
+        <Grid Grid.Row="1">
+            <dxg:GridControl AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True">
+                <dxg:GridControl.View>
+                    <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True"/>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </Grid>
+
+
+        <userControls:OrangeStatusBar Grid.Row="2"></userControls:OrangeStatusBar>
+
+    </Grid>
+</dxr:DXRibbonWindow>

@@ -107,6 +107,9 @@
     <Compile Include="UI\Clients\NewClient.xaml.cs">
       <DependentUpon>NewClient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\Clients\SearchClients.xaml.cs">
+      <DependentUpon>SearchClients.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserControls\OrangeRibbonCustomControl.cs" />
     <Compile Include="UI\UserControls\OrangeRibbonControl.xaml.cs">
       <DependentUpon>OrangeRibbonControl.xaml</DependentUpon>
@@ -134,6 +137,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UI\Clients\NewClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Clients\SearchClients.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
