@@ -18,7 +18,7 @@ namespace DS.OrangeAdmin.Client.VM.Clients
         private ObservableCollection<ClientsVM> _clients;
         public ObservableCollection<ClientsVM> Clients
         {
-            get => _clients;
+            get { return _clients; }
             set
             {
                 _clients = value;
