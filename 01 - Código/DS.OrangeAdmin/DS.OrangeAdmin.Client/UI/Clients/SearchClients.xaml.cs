@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DevExpress.Xpf.Bars;
 using DevExpress.Xpf.Ribbon;
+using DS.OrangeAdmin.DataProvider;
+using DS.OrangeAdmin.Client.VM.Clients;
 
 namespace DS.OrangeAdmin.Client.UI.Clients
 {
@@ -24,21 +26,12 @@ namespace DS.OrangeAdmin.Client.UI.Clients
         public SearchClients()
         {
             InitializeComponent();
+            Refresh();
         }
 
-        private void eFontSize_EditValueChanged(object sender, RoutedEventArgs e)
+        private async void Refresh()
         {
-            throw new NotImplementedException();
-        }
-
-        private void FontFamilyGallery_ItemChecked(object sender, GalleryItemEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void groupEdit_CaptionButtonClick(object sender, RibbonCaptionButtonClickEventArgs e)
-        {
-            throw new NotImplementedException();
+            this.DataContext = await BusinessProvider.ClientsBll.GetClientsSearchResultVM();
         }
 
         private void groupFile_CaptionButtonClick(object sender, RibbonCaptionButtonClickEventArgs e)
@@ -56,9 +49,5 @@ namespace DS.OrangeAdmin.Client.UI.Clients
             this.Close();
         }
 
-        private void OptionsButton_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

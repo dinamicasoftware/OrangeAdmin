@@ -16,9 +16,9 @@ namespace DS.OrangeAdmin.Client.VM.Clients
                 Nombre = x.Name,
                 Alias = x.Alias,
                 Código = x.Code,
-                NúmeroDeDocumento = x.DocumentNumber,
+                NúmeroDeDocumento = $"{x.DocumentType?.Name} {x.DocumentNumber}",
+                DefaultEmail = x.Emails?.FirstOrDefault()?.EmailAddress,
                 Observaciones = x.Observation,
-                DefaultEmail = x.Emails?.FirstOrDefault()?.EmailAddress
             });
         }
     }

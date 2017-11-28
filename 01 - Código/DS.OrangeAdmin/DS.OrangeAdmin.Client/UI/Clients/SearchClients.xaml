@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:DS.OrangeAdmin.Client.UI.Clients"
         xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
         mc:Ignorable="d"
-        Title="Clientes" Height="600" Width="800"
+        Title="Clientes" Height="638.908" Width="1133.788"
                     
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
         xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
@@ -29,7 +29,7 @@
                                ApplicationButtonText="Clientes" 
                                PageCategoryAlignment="Right"
                                RibbonStyle="Office2010">
-            
+
             <!--region #AppMenu (el menú contextual desplegable) -->
             <dxr:RibbonControl.ApplicationMenu>
                 <dxr:ApplicationMenu ShowRightPane="False">
@@ -77,7 +77,7 @@
         </dxr:RibbonControl>
 
         <Grid Grid.Row="1">
-            <dxg:GridControl AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True">
+            <dxg:GridControl ItemsSource="{Binding Clients}"  x:Name="clientsGrid"  AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True">
                 <dxg:GridControl.View>
                     <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True"/>
                 </dxg:GridControl.View>
