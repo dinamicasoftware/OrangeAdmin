@@ -31,7 +31,7 @@ namespace DS.OrangeAdmin.Client.UI.Clients
 
         private async void Refresh()
         {
-            this.DataContext = await BusinessProvider.ClientsBll.GetClientsSearchResultVM();
+            this.DataContext = await ClientBusinessProvider.ClientsBll.GetClientsSearchResultVM();
         }
 
         private void groupFile_CaptionButtonClick(object sender, RibbonCaptionButtonClickEventArgs e)

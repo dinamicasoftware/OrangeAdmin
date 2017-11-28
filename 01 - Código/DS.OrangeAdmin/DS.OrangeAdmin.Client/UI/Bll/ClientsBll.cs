@@ -19,7 +19,7 @@ namespace DS.OrangeAdmin.Client.UI.Bll
                 //OrderBy = new List<Expression<Func<Data.Entities.Client, object>>>(new List<Expression<Func<Data.Entities.Client, object>>>(x => x.))
             };
 
-            var clients = new List<ClientsVM>(ClientsVMHandler.GetClients((await BusinessProvider.DataProvider.GetClients(parameters)).Result));
+            var clients = new List<ClientsVM>(ClientsVMHandler.GetClients((await ClientBusinessProvider.DataProvider.GetClients(parameters)).Result));
             var vm = new ClientsSearchResultVM
             {
                 Clients = new ObservableCollection<ClientsVM>(clients)

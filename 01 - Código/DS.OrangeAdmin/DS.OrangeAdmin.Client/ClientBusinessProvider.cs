@@ -8,7 +8,7 @@ using DS.OrangeAdmin.DataProvider;
 
 namespace DS.OrangeAdmin.Client
 {
-    public static class BusinessProvider
+    public static class ClientBusinessProvider
     {
         private static IDataProvider _dataProvider;
         public static IDataProvider DataProvider => _dataProvider ?? (_dataProvider = new LocalDataProvider());

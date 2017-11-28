@@ -103,7 +103,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClientBusinessProvider.cs" />
     <Compile Include="Command\DelegateCommand.cs" />
+    <Compile Include="UI\Bll\ClientsBll.cs" />
     <Compile Include="UI\Clients\NewClient.xaml.cs">
       <DependentUpon>NewClient.xaml</DependentUpon>
     </Compile>
