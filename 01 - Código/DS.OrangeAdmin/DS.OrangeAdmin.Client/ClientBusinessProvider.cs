@@ -14,6 +14,7 @@ namespace DS.OrangeAdmin.Client
         public static IDataProvider DataProvider => _dataProvider ?? (_dataProvider = new LocalDataProvider());
 
         private static ClientsBll _clientsBll;
+        //public static ClientsBll ClientsBlls => new ClientsBll();
         public static ClientsBll ClientsBll => _clientsBll ?? (_clientsBll = new ClientsBll());
     }
 }

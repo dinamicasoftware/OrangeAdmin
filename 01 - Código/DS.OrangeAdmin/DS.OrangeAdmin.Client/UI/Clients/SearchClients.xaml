@@ -28,7 +28,7 @@
                                ApplicationButtonLargeIcon="{dxc:DXImage Image=Home_32x32.png}" 
                                ApplicationButtonText="Clientes" 
                                PageCategoryAlignment="Right"
-                               RibbonStyle="Office2010">
+                               RibbonStyle="OfficeSlim">
 
             <!--region #AppMenu (el menú contextual desplegable) -->
             <dxr:RibbonControl.ApplicationMenu>
@@ -45,15 +45,6 @@
             </dxr:RibbonControl.ApplicationMenu>
             <!--endregion #AppMenu-->
 
-            <!--region #PageHeaderItemLinks-->
-            <dxr:RibbonControl.PageHeaderItems>
-                <dxb:BarButtonItem Name="bAbout" Content="About" 
-                               Glyph="{dxc:DXImage Image=Info_16x16.png}" 
-                               LargeGlyph="{dxc:DXImage Image=Info_32x32.png}" 
-                               ItemClick="bAbout_ItemClick" />
-            </dxr:RibbonControl.PageHeaderItems>
-            <!--endregion #PageHeaderItemLinks-->
-
             <!--region #DefaultPageCategory-->
             <dxr:RibbonDefaultPageCategory>
                 <dxr:RibbonPage Caption="Home">
@@ -67,7 +58,7 @@
                                LargeGlyph="{dxc:DXImage Image=New_32x32.png}"  
                                Description="Crear un nuevo cliente"
                                Hint="Crear un nuevo cliente."
-                               RibbonStyle="Large"/>
+                               RibbonStyle="Large" ItemClick="bNew_ItemClick"/>
 
                     </dxr:RibbonPageGroup>
                 </dxr:RibbonPage>
