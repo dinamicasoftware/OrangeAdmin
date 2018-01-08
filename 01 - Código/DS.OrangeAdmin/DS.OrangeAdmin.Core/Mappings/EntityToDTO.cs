@@ -15,6 +15,7 @@ namespace DS.OrangeAdmin.Core.Mappings
 
             return  new ClientDTO()
             {
+                Address = Map(client.Address),
                 Alias = client.Alias,
                 ClientType = Map(client.ClientType),
                 Code = client.Code,
@@ -22,6 +23,7 @@ namespace DS.OrangeAdmin.Core.Mappings
                 Deleted = client.Deleted,
                 DocumentNumber = client.DocumentNumber,
                 DocumentType = Map(client.DocumentType),
+                Email = Map(client.Email),
                 Emails = Map(client.Emails),
                 Branches = Map(client.Branches),
                 Id = client.Id,
@@ -62,13 +64,13 @@ namespace DS.OrangeAdmin.Core.Mappings
             };
         }
 
-        public static IList<BranchDTO> Map(ICollection<Branch> branches)
+        public static BranchDTO Map(Branch branch)
         {
-            if (branches == null)
+            if (branch == null)
                 return null;
 
-            return branches.Select(branch => new BranchDTO()
-            { 
+            return new BranchDTO()
+            {
                 Address = branch.Address,
                 City = branch.City,
                 Country = Map(branch.Country),
@@ -80,7 +82,15 @@ namespace DS.OrangeAdmin.Core.Mappings
                 UpdatedAt = branch.UpdatedAt,
                 ZIP = branch.ZIP,
                 Zone = Map(branch.Zone)
-            }).ToList();
+            };
+        }
+
+        public static IList<BranchDTO> Map(ICollection<Branch> branches)
+        {
+            if (branches == null)
+                return null;
+
+            return branches.Select(branch => Map(branch)).ToList();
         }
 
         public static IList<PhoneNumberDTO> Map(ICollection<PhoneNumber> phones)
@@ -100,12 +110,12 @@ namespace DS.OrangeAdmin.Core.Mappings
             }).ToList();
         }
 
-        public static IList<EmailDTO> Map(ICollection<Email> emails)
+        public static EmailDTO Map(Email email)
         {
-            if (emails == null)
+            if (email == null)
                 return null;
 
-            return emails.Select(email => new EmailDTO()
+            return new EmailDTO()
             {
                 ContactType = Map(email.ContactType),
                 CreatedAt = email.CreatedAt,
@@ -114,7 +124,15 @@ namespace DS.OrangeAdmin.Core.Mappings
                 EmailAddress = email.EmailAddress,
                 Id = email.Id,
                 UpdatedAt = email.UpdatedAt
-            }).ToList();
+            };
+        }
+
+        public static IList<EmailDTO> Map(ICollection<Email> emails)
+        {
+            if (emails == null)
+                return null;
+
+            return emails.Select(email => Map(email)).ToList();
         }
 
         public static ContactTypeDTO Map(ContactType contactType)

@@ -26,7 +26,11 @@ namespace DS.OrangeAdmin.Core.DTO
         [DataMember]
         public ClientTypeDTO ClientType { get; set; }
         [DataMember]
+        public EmailDTO Email { get; set; }
+        [DataMember]
         public IList<EmailDTO> Emails { get; set; }
+        [DataMember]
+        public BranchDTO Address { get; set; }
         [DataMember]
         public IList<BranchDTO> Branches { get; set; }
         [DataMember]

@@ -15,6 +15,7 @@ namespace DS.OrangeAdmin.Core.Mappings
 
             return new Client()
             {
+                Address = Map(client.Address),
                 Alias = client.Alias,
                 ClientType = Map(client.ClientType),
                 Code = client.Code,
@@ -22,6 +23,7 @@ namespace DS.OrangeAdmin.Core.Mappings
                 Deleted = client.Deleted,
                 DocumentNumber = client.DocumentNumber,
                 DocumentType = Map(client.DocumentType),
+                Email = Map(client.Email),
                 Emails = Map(client.Emails),
                 Branches = Map(client.Branches),
                 Id = client.Id,
@@ -62,12 +64,12 @@ namespace DS.OrangeAdmin.Core.Mappings
             };
         }
 
-        public static IList<Email> Map(IList<EmailDTO> emails)
+        public static Email Map(EmailDTO email)
         {
-            if (emails == null)
+            if (email == null)
                 return null;
 
-            return emails.Select(email => new Email()
+            return new Email()
             {
                 ContactType = Map(email.ContactType),
                 CreatedAt = email.CreatedAt,
@@ -76,7 +78,15 @@ namespace DS.OrangeAdmin.Core.Mappings
                 EmailAddress = email.EmailAddress,
                 Id = email.Id,
                 UpdatedAt = email.UpdatedAt
-            }).ToList();
+            };
+        }
+
+        public static IList<Email> Map(IList<EmailDTO> emails)
+        {
+            if (emails == null)
+                return null;
+
+            return emails.Select(email => Map(email)).ToList();
         }
 
         public static IList<PhoneNumber> Map(ICollection<PhoneNumberDTO> phones)
@@ -96,12 +106,12 @@ namespace DS.OrangeAdmin.Core.Mappings
             }).ToList();
         }
 
-        public static IList<Branch> Map(IList<BranchDTO> branches)
+        public static Branch Map(BranchDTO branch)
         {
-            if (branches == null)
+            if (branch == null)
                 return null;
 
-            return branches.Select(branch => new Branch()
+            return new Branch()
             {
                 Address = branch.Address,
                 City = branch.City,
@@ -114,7 +124,15 @@ namespace DS.OrangeAdmin.Core.Mappings
                 UpdatedAt = branch.UpdatedAt,
                 ZIP = branch.ZIP,
                 Zone = Map(branch.Zone)
-            }).ToList();
+            };
+        }
+
+        public static IList<Branch> Map(IList<BranchDTO> branches)
+        {
+            if (branches == null)
+                return null;
+
+            return branches.Select(branch => Map(branch)).ToList();
         }
 
         public static ContactType Map(ContactTypeDTO contactType)
