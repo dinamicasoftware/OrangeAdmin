@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DevExpress.Xpf.Ribbon;
 using DS.OrangeAdmin.Client.VM.Clients;
 using DS.OrangeAdmin.Core.DTO;
 using DS.OrangeAdmin.DataProvider;
@@ -20,7 +21,7 @@ namespace DS.OrangeAdmin.Client.UI.Clients
     /// <summary>
     /// Lógica de interacción para NewClient.xaml
     /// </summary>
-    public partial class NewClient : Window
+    public partial class NewClient
     {
         private IDataProvider dataProvider;
         private NewClientVM vm;
@@ -66,6 +67,16 @@ namespace DS.OrangeAdmin.Client.UI.Clients
             };
             dataProvider.SaveClient(newClient);
             this.Close();
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void groupFile_CaptionButtonClick(object sender, RibbonCaptionButtonClickEventArgs e)
+        {
+            
         }
     }
 }

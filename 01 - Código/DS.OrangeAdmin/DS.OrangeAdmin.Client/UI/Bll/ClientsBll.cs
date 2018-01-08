@@ -11,7 +11,7 @@ namespace DS.OrangeAdmin.Client.UI.Bll
 {
     public class ClientsBll
     {
-        public static async Task<ClientsSearchResultVM> GetClientsSearchResultVM()
+        public async Task<ClientsSearchResultVM> GetClientsSearchResultVM()
         {
             var parameters = new Core.Queries.QueryParameters<Data.Entities.Client>
             {

@@ -39,15 +39,15 @@ namespace DS.OrangeAdmin.Client.UI.Clients
             
         }
 
-        private void bAbout_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            
-        }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        private void bNew_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            (new NewClient()).Show();
+        }
     }
 }

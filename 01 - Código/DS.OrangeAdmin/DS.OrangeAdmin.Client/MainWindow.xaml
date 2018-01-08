@@ -8,7 +8,12 @@
         xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
         xmlns:userControls="clr-namespace:DS.OrangeAdmin.Client.UI.UserControls"
+        xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
+                    
+        xmlns:dxcore="http://schemas.devexpress.com/winfx/2008/xaml/core"
+                    
         Icon="{dxc:DXImage Image=Home_16x16.png}"
+
         dxc:ThemeManager.ThemeName="Office2016White">
 
     <Grid>
@@ -19,8 +24,22 @@
         </Grid.RowDefinitions>
 
         <userControls:OrangeRibbonControl Grid.Row="0"></userControls:OrangeRibbonControl>
-        
-        <Button Grid.Row="1" Click="ButtonBase_OnClick">CLICK ME!</Button>
+
+        <DockPanel>
+            <dxb:BarContainerControl x:Name="TopDockControl" DockPanel.Dock="Top" />
+            <dxb:BarContainerControl x:Name="LeftDockControl" DockPanel.Dock="Left" Orientation="Vertical" />
+            <dxb:BarContainerControl x:Name="BottomDockControl" DockPanel.Dock="Bottom" />
+            <dxb:BarContainerControl x:Name="RightDockControl" DockPanel.Dock="Right" Orientation="Vertical" />
+
+            <dxdo:DockLayoutManager x:Name="dockManager" ClosingBehavior="ImmediatelyRemove">
+                <dxdo:LayoutGroup>
+                    <dxdo:DocumentGroup Name="mdiContainer" MDIStyle="MDI" DestroyOnClosingChildren="False" ClosePageButtonShowMode="InAllTabPageHeaders" />
+                </dxdo:LayoutGroup>
+            </dxdo:DockLayoutManager>
+            
+        </DockPanel>
+
+        <!--<Button Grid.Row="1" Click="ButtonBase_OnClick">CLICK ME!</Button>-->
         
         <userControls:OrangeStatusBar Grid.Row="2"></userControls:OrangeStatusBar>
         
