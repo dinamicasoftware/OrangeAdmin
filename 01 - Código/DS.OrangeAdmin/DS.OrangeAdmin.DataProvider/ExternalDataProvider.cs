@@ -22,9 +22,21 @@ namespace DS.OrangeAdmin.DataProvider
             return await this.client.GetClientAsync(id);
         }
 
+        public async Task<OperationResult<int>> GetCount(QueryParameters<Client> parameters)
+        {
+            //return await this.client.GetClientsGridAsync(DS.OrangeAdmin.Server.Queries.QueryParameters.Serialize(parameters));
+            throw new NotImplementedException();
+        }
+
         public async Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters<Client> parameters)
         {
             return await this.client.GetClientsAsync(DS.OrangeAdmin.Server.Queries.QueryParameters.Serialize(parameters));
+        }
+
+        public async Task<OperationResult<List<ClientGridDTO>>> GetClientsGrid(QueryParameters<Client> parameters)
+        {
+            //return await this.client.GetClientsGridAsync(DS.OrangeAdmin.Server.Queries.QueryParameters.Serialize(parameters));
+            throw new NotImplementedException();
         }
 
         public async Task<OperationResult> SaveClient(ClientDTO client)

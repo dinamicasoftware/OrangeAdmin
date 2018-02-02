@@ -13,7 +13,9 @@ namespace DS.OrangeAdmin.DataProvider
     public interface IDataProvider
     {
         Task<OperationResult<ClientDTO>> GetClient(Guid id);
+        Task<OperationResult<int>> GetCount(QueryParameters<Client> parameters);
         Task<OperationResult<List<ClientDTO>>> GetClients(QueryParameters<Client> parameters);
+        Task<OperationResult<List<ClientGridDTO>>> GetClientsGrid(QueryParameters<Client> parameters);
         Task<OperationResult> SaveClient(ClientDTO client);
     }
 }

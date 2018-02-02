@@ -25,6 +25,7 @@ namespace DS.OrangeAdmin.Client.UI.UserControls
         public OrangeRibbonControl()
         {
             InitializeComponent();
+
         }
 
         private void bAbout_ItemClick(object sender, ItemClickEventArgs e)

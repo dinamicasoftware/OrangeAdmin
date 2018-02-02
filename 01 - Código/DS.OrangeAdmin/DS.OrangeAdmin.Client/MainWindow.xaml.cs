@@ -1,38 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using DevExpress.Xpf.Bars;
-using DevExpress.Xpf.Editors.Settings;
-using System.Collections.ObjectModel;
-using System.Globalization;
-using System.Windows.Threading;
 using DevExpress.Xpf.Ribbon;
-using DS.OrangeAdmin.Client.UI.Clients;
+using DS.OrangeAdmin.Client.UI.Views.Base;
+using DS.OrangeAdmin.Client.UI.Views.Clients;
+using DS.OrangeAdmin.Client.VM.Clients;
 
-namespace RibbonControl_Ex
+namespace DS.OrangeAdmin.Client
 {
     public partial class MainWindow : DXRibbonWindow
     {
+        private static MainWindow CurrentMainWindow { get; set; }
+
+        public static void ShowInMainWindow(DSDocumentPanel panel)
+        {
+            CurrentMainWindow.Show(panel);
+        }
+
+        public static void RemoveFromMainWindow(DSDocumentPanel panel)
+        {
+            CurrentMainWindow.Close(panel);
+        }
 
         public MainWindow()
         {
             InitializeComponent();
-            
+            abmClientes.ItemClick += AbmClientes_ItemClick;
+            abmClientesLink.ItemClick += AbmClientes_ItemClick;
+            CurrentMainWindow = this;
         }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private void AbmClientes_ItemClick(object sender, ItemClickEventArgs e)
         {
-            new SearchClients().ShowDialog();
+            ClientsGrid clientsGrid = new ClientsGrid();
+            clientsGrid.DataContext = new ClientsGridVM();
+            clientsGrid.Caption = "A/B/M de Clientes";
+            Show(clientsGrid);
+        }
+
+        public void Show(DSDocumentPanel panel)
+        {
+            documentGroup1.Add(panel);
+            dockManager1.Activate(panel);
+        }
+
+        public void Close(DSDocumentPanel panel)
+        {
+            documentGroup1.Remove(panel);
         }
     }
 }
